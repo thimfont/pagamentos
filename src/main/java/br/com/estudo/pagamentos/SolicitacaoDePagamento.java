@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class SolicitacaoDePagamento {
-    private String numeroDoPedido;
+    private Integer numeroDaSolicitacao;
     private String tipoDoDocumento;
     private String numeroDoDocumento;
     private LocalDate dataDeEmissaoDoDocumento;
@@ -20,8 +20,8 @@ public class SolicitacaoDePagamento {
     private String observacao;
     private String motivo;
 
-    public SolicitacaoDePagamento(String numeroDoPedido, String tipoDoDocumento, String numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
-        if (numeroDoPedido == "" || numeroDoPedido == null
+    public SolicitacaoDePagamento(Integer numeroDaSolicitacao, String tipoDoDocumento, String numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
+        if (numeroDaSolicitacao == 0 || numeroDaSolicitacao == null
                 || tipoDoDocumento == "" || tipoDoDocumento == null
                 || numeroDoDocumento == "" || numeroDoDocumento == null
                 || dataDeEmissaoDoDocumento == null
@@ -30,7 +30,7 @@ public class SolicitacaoDePagamento {
                 || valorTotal.intValue() == 0 || valorTotal == null
         ) throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
 
-        this.numeroDoPedido = numeroDoPedido;
+        this.numeroDaSolicitacao = numeroDaSolicitacao;
         this.tipoDoDocumento = tipoDoDocumento;
         this.numeroDoDocumento = numeroDoDocumento;
         this.dataDeEmissaoDoDocumento = dataDeEmissaoDoDocumento;
