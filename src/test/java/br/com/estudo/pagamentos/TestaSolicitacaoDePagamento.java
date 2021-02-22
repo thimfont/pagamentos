@@ -12,16 +12,16 @@ public class TestaSolicitacaoDePagamento {
     }
 
     public void naoDeveCriarSolicitacaoDePagamentoAoPassarArgumentosNulosOuVazios() {
-        SolicitacaoDePagamento solicitacao1 = new SolicitacaoDePagamento(null, "", "", null, "", "", new BigDecimal(0));
+        SolicitacaoDePagamento solicitacao1 = new SolicitacaoDePagamento(null, "", null, null, "", "", new BigDecimal(0));
         SolicitacaoDePagamento solicitacao2 = new SolicitacaoDePagamento(null, null, null, null, null, null, null);
     }
 
     public void naoDeveCriarSolicitacaoDePagamentoAoPassarTotalZero() {
-        new SolicitacaoDePagamento(123, "456", "789", LocalDate.now(), "BOLETO", "BRL", new BigDecimal(0));
+        new SolicitacaoDePagamento(123, "456", 789, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(0));
     }
 
     public void deveCriarSolicitacaoDePagamento() {
-        new SolicitacaoDePagamento(123, "456", "789", LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10));
+        new SolicitacaoDePagamento(123, "456", 789, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10));
     }
 
 }

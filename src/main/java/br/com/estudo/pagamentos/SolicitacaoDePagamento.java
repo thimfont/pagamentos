@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public class SolicitacaoDePagamento {
     private Integer numeroDaSolicitacao;
     private String tipoDoDocumento;
-    private String numeroDoDocumento;
+    private Integer numeroDoDocumento;
     private LocalDate dataDeEmissaoDoDocumento;
     private String formaDePagamento;
     private String tipoDeMoeda;
@@ -20,10 +20,10 @@ public class SolicitacaoDePagamento {
     private String observacao;
     private String motivo;
 
-    public SolicitacaoDePagamento(Integer numeroDaSolicitacao, String tipoDoDocumento, String numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
+    public SolicitacaoDePagamento(Integer numeroDaSolicitacao, String tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
         if (numeroDaSolicitacao == 0 || numeroDaSolicitacao == null
                 || tipoDoDocumento == "" || tipoDoDocumento == null
-                || numeroDoDocumento == "" || numeroDoDocumento == null
+                || numeroDoDocumento == 0 || numeroDoDocumento == null
                 || dataDeEmissaoDoDocumento == null
                 || formaDePagamento == "" || formaDePagamento == null
                 || tipoDeMoeda == "" || tipoDeMoeda == null
