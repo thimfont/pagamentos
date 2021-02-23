@@ -8,7 +8,6 @@ import java.util.List;
 public class SolicitacaoDePagamento {
     private Integer numero;
     private Documento documento;
-    private String formaDePagamento;
     private String moeda;
     private BigDecimal total;
     private LocalDateTime dataDeCadastro;
@@ -19,7 +18,6 @@ public class SolicitacaoDePagamento {
         validacao(numero, moeda, total);
         this.documento = new Documento(tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento, formaDePagamento);
         this.numero = numero;
-        this.formaDePagamento = formaDePagamento;
         this.moeda = moeda;
         this.total = total;
         this.dataDeCadastro = LocalDateTime.now();
