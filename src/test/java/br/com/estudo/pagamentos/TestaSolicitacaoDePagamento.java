@@ -36,7 +36,7 @@ public class TestaSolicitacaoDePagamento {
 
         Assertions.assertEquals(numeroDaSolicitacao, solicitacao.getNumero());
         Assertions.assertEquals(numeroDoDocumento, solicitacao.getNumeroDoDocumento());
-        Assertions.assertEquals(valorTotal, solicitacao.getValorTotal());
+        Assertions.assertEquals(valorTotal, solicitacao.getTotal());
     }
 
     @Test

@@ -7,24 +7,24 @@ import java.time.LocalDateTime;
 public class SolicitacaoDePagamento {
     private String tipo;
     private Integer numero;
-    private String status;
     private Documento documento;
     private String formaDePagamento;
-    private String tipoDeMoeda;
-    private BigDecimal valorTotal;
-    private LocalDateTime dataDeRegistro;
-    private LocalDateTime dataUltimaAtualizacao;
+    private String moeda;
+    private BigDecimal total;
+    private String status;
+    private LocalDateTime dataDeCadastro;
+    private LocalDateTime dataDaUltimaAtualizacao;
     private String observacoesContabilidade;
     private String observacao;
     private String motivo;
 
-    public SolicitacaoDePagamento(Integer numero, String tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
-        validacao(numero, formaDePagamento, tipoDeMoeda, valorTotal);
+    public SolicitacaoDePagamento(Integer numero, String tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String moeda, BigDecimal total) {
+        validacao(numero, formaDePagamento, moeda, total);
         this.documento = new Documento(tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento);
         this.numero = numero;
         this.formaDePagamento = formaDePagamento;
-        this.tipoDeMoeda = tipoDeMoeda;
-        this.valorTotal = valorTotal;
+        this.moeda = moeda;
+        this.total = total;
     }
 
     private void validacao(Integer numeroDaSolicitacao, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
@@ -47,7 +47,7 @@ public class SolicitacaoDePagamento {
         return documento.getNumero();
     }
 
-    public BigDecimal getValorTotal() {
-        return valorTotal;
+    public BigDecimal getTotal() {
+        return total;
     }
 }
