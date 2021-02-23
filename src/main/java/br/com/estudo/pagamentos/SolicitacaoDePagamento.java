@@ -6,14 +6,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class SolicitacaoDePagamento {
-    private String tipo;
     private Integer numero;
     private Documento documento;
     private String formaDePagamento;
     private String moeda;
     private BigDecimal total;
     private LocalDateTime dataDeCadastro;
-    private LocalDateTime dataDaUltimaAtualizacao;
     private List<String> observacoes;
     private String status;
 
@@ -24,6 +22,7 @@ public class SolicitacaoDePagamento {
         this.formaDePagamento = formaDePagamento;
         this.moeda = moeda;
         this.total = total;
+        this.dataDeCadastro = LocalDateTime.now();
     }
 
     private void validacao(Integer numeroDaSolicitacao, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
