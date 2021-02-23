@@ -3,12 +3,12 @@ package br.com.estudo.pagamentos;
 import java.time.LocalDate;
 
 class Documento {
-    private String tipo;
+    private TipoDeDocumento tipo;
     private Integer numero;
     private LocalDate dataDeEmissao;
 
-    public Documento(String tipo, Integer numero, LocalDate dataDeEmissao) {
-        if (numero == null || tipo == "" || tipo == null || dataDeEmissao == null)
+    public Documento(TipoDeDocumento tipo, Integer numero, LocalDate dataDeEmissao) {
+        if (numero == null || tipo == null || dataDeEmissao == null)
             throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
 
         if (!numero.toString().matches("^\\d{6}$"))

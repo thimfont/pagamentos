@@ -15,7 +15,7 @@ public class SolicitacaoDePagamento {
     private List<String> observacoes;
     private Status status;
 
-    public SolicitacaoDePagamento(Integer numero, String tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String moeda, BigDecimal total) {
+    public SolicitacaoDePagamento(Integer numero, TipoDeDocumento tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String moeda, BigDecimal total) {
         validacao(numero, formaDePagamento, moeda, total);
         this.documento = new Documento(tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento);
         this.numero = numero;
