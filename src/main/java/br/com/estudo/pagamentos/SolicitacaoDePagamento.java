@@ -1,22 +1,19 @@
 package br.com.estudo.pagamentos;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class SolicitacaoDePagamento {
     private Integer numero;
-    private Documento documento;
     private String moeda;
     private BigDecimal total;
     private LocalDateTime dataDeCadastro;
     private List<String> observacoes;
     private Status status;
 
-    public SolicitacaoDePagamento(Integer numero, TipoDeDocumento tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String moeda, BigDecimal total) {
+    public SolicitacaoDePagamento(Integer numero, String moeda, BigDecimal total) {
         validacao(numero, moeda, total);
-        this.documento = new Documento(tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento, formaDePagamento);
         this.numero = numero;
         this.moeda = moeda;
         this.total = total;
@@ -37,10 +34,6 @@ public class SolicitacaoDePagamento {
 
     public Integer getNumero() {
         return numero;
-    }
-
-    public Integer getNumeroDoDocumento() {
-        return documento.getNumero();
     }
 
     public BigDecimal getTotal() {
