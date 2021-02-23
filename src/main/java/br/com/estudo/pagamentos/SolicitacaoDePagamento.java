@@ -44,5 +44,12 @@ public class SolicitacaoDePagamento {
 
         if (numeroDaSolicitacao == 0 || numeroDoDocumento == 0 || valorTotal.intValue() == 0)
             throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
+
+        if (!numeroDaSolicitacao.toString().matches("^\\d{8}$"))
+            throw new IllegalArgumentException("Numero da solicitação precisa ter 8 números.");
+    }
+
+    public Integer getNumeroDaSolicitacao() {
+        return numeroDaSolicitacao;
     }
 }

@@ -30,4 +30,17 @@ public class TestaSolicitacaoDePagamento {
     public void deveCriarSolicitacaoDePagamento() {
         new SolicitacaoDePagamento(123, "456", 789, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10));
     }
+
+    @Test
+    public void naoDeveCriarSolicitacaoDePagamentoComNumeroDeSolicitacaoInvalido() {
+        Integer numeroDaSolicitacao = 10;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(numeroDaSolicitacao, "456", 789, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10)));
+    }
+
+    @Test
+    public void deveCriarSolicitacaoDePagamentoQuandoNumeroDeSolicitacaoPossuir8Digitos() {
+        Integer numeroDaSolicitacao = 12345678;
+        SolicitacaoDePagamento solicitacao = new SolicitacaoDePagamento(numeroDaSolicitacao, "456", 789, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10));
+        Assertions.assertEquals(numeroDaSolicitacao, solicitacao.getNumeroDaSolicitacao());
+    }
 }
