@@ -47,9 +47,16 @@ public class SolicitacaoDePagamento {
 
         if (!numeroDaSolicitacao.toString().matches("^\\d{8}$"))
             throw new IllegalArgumentException("Numero da solicitação precisa ter 8 números.");
+
+        if (!numeroDoDocumento.toString().matches("^\\d{6}$"))
+            throw new IllegalArgumentException("Numero do documento precisa ter 6 números.");
     }
 
     public Integer getNumeroDaSolicitacao() {
         return numeroDaSolicitacao;
+    }
+
+    public Integer getNumeroDoDocumento() {
+        return numeroDoDocumento;
     }
 }

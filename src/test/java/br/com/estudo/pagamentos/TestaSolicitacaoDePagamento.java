@@ -43,4 +43,17 @@ public class TestaSolicitacaoDePagamento {
         SolicitacaoDePagamento solicitacao = new SolicitacaoDePagamento(numeroDaSolicitacao, "456", 789, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10));
         Assertions.assertEquals(numeroDaSolicitacao, solicitacao.getNumeroDaSolicitacao());
     }
+
+    @Test
+    public void naoDeveCriarSolicitacaoDePagamentoComNumeroDeDocumentoInvalido() {
+        Integer numeroDocumento = 10;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(12345678, "456", numeroDocumento, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10)));
+    }
+
+    @Test
+    public void deveCriarSolicitacaoDePagamentoQuandoNumeroDeDocumentoPossuir6Digitos() {
+        Integer numeroDocumento = 123456;
+        SolicitacaoDePagamento solicitacao = new SolicitacaoDePagamento(12345678, "456", numeroDocumento, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10));
+        Assertions.assertEquals(numeroDocumento, solicitacao.getNumeroDoDocumento());
+    }
 }
