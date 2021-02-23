@@ -21,14 +21,7 @@ public class SolicitacaoDePagamento {
     private String motivo;
 
     public SolicitacaoDePagamento(Integer numeroDaSolicitacao, String tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
-        if (numeroDaSolicitacao == 0 || numeroDaSolicitacao == null
-                || tipoDoDocumento == "" || tipoDoDocumento == null
-                || numeroDoDocumento == 0 || numeroDoDocumento == null
-                || dataDeEmissaoDoDocumento == null
-                || formaDePagamento == "" || formaDePagamento == null
-                || tipoDeMoeda == "" || tipoDeMoeda == null
-                || valorTotal.intValue() == 0 || valorTotal == null
-        ) throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
+        validacao(numeroDaSolicitacao, tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento, formaDePagamento, tipoDeMoeda, valorTotal);
 
         this.numeroDaSolicitacao = numeroDaSolicitacao;
         this.tipoDoDocumento = tipoDoDocumento;
@@ -37,5 +30,19 @@ public class SolicitacaoDePagamento {
         this.formaDePagamento = formaDePagamento;
         this.tipoDeMoeda = tipoDeMoeda;
         this.valorTotal = valorTotal;
+    }
+
+    private void validacao(Integer numeroDaSolicitacao, String tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
+        if (numeroDaSolicitacao == null
+                || tipoDoDocumento == "" || tipoDoDocumento == null
+                || numeroDoDocumento == null
+                || dataDeEmissaoDoDocumento == null
+                || formaDePagamento == "" || formaDePagamento == null
+                || tipoDeMoeda == "" || tipoDeMoeda == null
+                || valorTotal == null
+        ) throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
+
+        if (numeroDaSolicitacao == 0 || numeroDoDocumento == 0 || valorTotal.intValue() == 0)
+            throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
     }
 }
