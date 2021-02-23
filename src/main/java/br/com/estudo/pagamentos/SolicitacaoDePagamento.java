@@ -16,8 +16,8 @@ public class SolicitacaoDePagamento {
     private Status status;
 
     public SolicitacaoDePagamento(Integer numero, TipoDeDocumento tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String moeda, BigDecimal total) {
-        validacao(numero, formaDePagamento, moeda, total);
-        this.documento = new Documento(tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento);
+        validacao(numero, moeda, total);
+        this.documento = new Documento(tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento, formaDePagamento);
         this.numero = numero;
         this.formaDePagamento = formaDePagamento;
         this.moeda = moeda;
@@ -26,9 +26,8 @@ public class SolicitacaoDePagamento {
         this.status = Status.ENVIADO_PARA_GESTOR;
     }
 
-    private void validacao(Integer numeroDaSolicitacao, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
-        if (numeroDaSolicitacao == null || formaDePagamento == "" || formaDePagamento == null
-                || tipoDeMoeda == "" || tipoDeMoeda == null || valorTotal == null
+    private void validacao(Integer numeroDaSolicitacao, String tipoDeMoeda, BigDecimal valorTotal) {
+        if (numeroDaSolicitacao == null || tipoDeMoeda == "" || tipoDeMoeda == null || valorTotal == null
         ) throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
 
         if (numeroDaSolicitacao == 0 || valorTotal.intValue() == 0)

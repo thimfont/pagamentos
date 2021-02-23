@@ -6,9 +6,10 @@ class Documento {
     private TipoDeDocumento tipo;
     private Integer numero;
     private LocalDate dataDeEmissao;
+    private String formaDePagamento;
 
-    public Documento(TipoDeDocumento tipo, Integer numero, LocalDate dataDeEmissao) {
-        if (numero == null || tipo == null || dataDeEmissao == null)
+    public Documento(TipoDeDocumento tipo, Integer numero, LocalDate dataDeEmissao, String formaDePagamento) {
+        if (numero == null || tipo == null || dataDeEmissao == null || formaDePagamento == "" || formaDePagamento == null)
             throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
 
         if (!numero.toString().matches("^\\d{6}$"))
@@ -17,6 +18,7 @@ class Documento {
         this.tipo = tipo;
         this.numero = numero;
         this.dataDeEmissao = dataDeEmissao;
+        this.formaDePagamento = formaDePagamento;
     }
 
     public Integer getNumero() {
