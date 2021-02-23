@@ -16,12 +16,18 @@ public class TestaSolicitacaoDePagamento {
 
     @Test
     public void naoDeveCriarSolicitacaoDePagamentoAoPassarTotalZero() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(123, "456", 789, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(0)));
+        Integer numeroDaSolicitacaoEhZero = 0;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(numeroDaSolicitacaoEhZero, "456", 789, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10)));
+
+        Integer numeroDoDocumentoEhZero = 0;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(123, "456", numeroDoDocumentoEhZero, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(20)));
+
+        BigDecimal valorTotalEhZero = new BigDecimal("0");
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(123, "456", 789, LocalDate.now(), "BOLETO", "BRL", valorTotalEhZero));
     }
 
     @Test
     public void deveCriarSolicitacaoDePagamento() {
         new SolicitacaoDePagamento(123, "456", 789, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10));
     }
-
 }
