@@ -28,7 +28,15 @@ public class TestaSolicitacaoDePagamento {
 
     @Test
     public void deveCriarSolicitacaoDePagamento() {
-        new SolicitacaoDePagamento(123, "456", 789, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10));
+        Integer numeroDaSolicitacao = 12345678;
+        Integer numeroDoDocumento = 123456;
+        BigDecimal valorTotal = new BigDecimal(10);
+
+        SolicitacaoDePagamento solicitacao = new SolicitacaoDePagamento(numeroDaSolicitacao, "456", numeroDoDocumento, LocalDate.now(), "BOLETO", "BRL", valorTotal);
+
+        Assertions.assertEquals(numeroDaSolicitacao, solicitacao.getNumeroDaSolicitacao());
+        Assertions.assertEquals(numeroDoDocumento, solicitacao.getNumeroDoDocumento());
+        Assertions.assertEquals(valorTotal, solicitacao.getValorTotal());
     }
 
     @Test
@@ -40,7 +48,7 @@ public class TestaSolicitacaoDePagamento {
     @Test
     public void deveCriarSolicitacaoDePagamentoQuandoNumeroDeSolicitacaoPossuir8Digitos() {
         Integer numeroDaSolicitacao = 12345678;
-        SolicitacaoDePagamento solicitacao = new SolicitacaoDePagamento(numeroDaSolicitacao, "456", 789, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10));
+        SolicitacaoDePagamento solicitacao = new SolicitacaoDePagamento(numeroDaSolicitacao, "456", 123456, LocalDate.now(), "BOLETO", "BRL", new BigDecimal(10));
         Assertions.assertEquals(numeroDaSolicitacao, solicitacao.getNumeroDaSolicitacao());
     }
 

@@ -59,4 +59,8 @@ public class SolicitacaoDePagamento {
     public Integer getNumeroDoDocumento() {
         return numeroDoDocumento;
     }
+
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
 }
