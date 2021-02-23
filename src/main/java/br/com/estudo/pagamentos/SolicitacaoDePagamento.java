@@ -5,7 +5,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class SolicitacaoDePagamento {
-    private Integer numeroDaSolicitacao;
+    private String tipo;
+    private Integer numero;
+    private String status;
     private String tipoDoDocumento;
     private Integer numeroDoDocumento;
     private LocalDate dataDeEmissaoDoDocumento;
@@ -14,16 +16,14 @@ public class SolicitacaoDePagamento {
     private BigDecimal valorTotal;
     private LocalDateTime dataDeRegistro;
     private LocalDateTime dataUltimaAtualizacao;
-    private String status;
-    private String tipoDeSolicitacao;
     private String observacoesContabilidade;
     private String observacao;
     private String motivo;
 
-    public SolicitacaoDePagamento(Integer numeroDaSolicitacao, String tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
-        validacao(numeroDaSolicitacao, tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento, formaDePagamento, tipoDeMoeda, valorTotal);
+    public SolicitacaoDePagamento(Integer numero, String tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
+        validacao(numero, tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento, formaDePagamento, tipoDeMoeda, valorTotal);
 
-        this.numeroDaSolicitacao = numeroDaSolicitacao;
+        this.numero = numero;
         this.tipoDoDocumento = tipoDoDocumento;
         this.numeroDoDocumento = numeroDoDocumento;
         this.dataDeEmissaoDoDocumento = dataDeEmissaoDoDocumento;
@@ -52,8 +52,8 @@ public class SolicitacaoDePagamento {
             throw new IllegalArgumentException("Numero do documento precisa ter 6 números.");
     }
 
-    public Integer getNumeroDaSolicitacao() {
-        return numeroDaSolicitacao;
+    public Integer getNumero() {
+        return numero;
     }
 
     public Integer getNumeroDoDocumento() {
