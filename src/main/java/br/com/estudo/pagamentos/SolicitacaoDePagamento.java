@@ -3,6 +3,7 @@ package br.com.estudo.pagamentos;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class SolicitacaoDePagamento {
     private String tipo;
@@ -11,12 +12,10 @@ public class SolicitacaoDePagamento {
     private String formaDePagamento;
     private String moeda;
     private BigDecimal total;
-    private String status;
     private LocalDateTime dataDeCadastro;
     private LocalDateTime dataDaUltimaAtualizacao;
-    private String observacoesContabilidade;
-    private String observacao;
-    private String motivo;
+    private List<String> observacoes;
+    private String status;
 
     public SolicitacaoDePagamento(Integer numero, String tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String moeda, BigDecimal total) {
         validacao(numero, formaDePagamento, moeda, total);
