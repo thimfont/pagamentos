@@ -13,7 +13,7 @@ public class SolicitacaoDePagamento {
     private BigDecimal total;
     private LocalDateTime dataDeCadastro;
     private List<String> observacoes;
-    private String status;
+    private Status status;
 
     public SolicitacaoDePagamento(Integer numero, String tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento, String moeda, BigDecimal total) {
         validacao(numero, formaDePagamento, moeda, total);
@@ -23,6 +23,7 @@ public class SolicitacaoDePagamento {
         this.moeda = moeda;
         this.total = total;
         this.dataDeCadastro = LocalDateTime.now();
+        this.status = Status.ENVIADO_PARA_GESTOR;
     }
 
     private void validacao(Integer numeroDaSolicitacao, String formaDePagamento, String tipoDeMoeda, BigDecimal valorTotal) {
