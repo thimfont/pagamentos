@@ -15,11 +15,6 @@ public class TestaSolicitacaoDePagamento {
 
     @Test
     public void naoDeveCriarSolicitacaoDePagamentoAoPassarTotalZero() {
-        Integer numeroDaSolicitacaoEhZero = 0;
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(numeroDaSolicitacaoEhZero, null, new BigDecimal(10)));
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(123, null, new BigDecimal(20)));
-
         BigDecimal valorTotalEhZero = new BigDecimal("0");
         Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(123, null, valorTotalEhZero));
     }
@@ -36,9 +31,10 @@ public class TestaSolicitacaoDePagamento {
     }
 
     @Test
-    public void naoDeveCriarSolicitacaoDePagamentoComNumeroDeSolicitacaoInvalido() {
-        Integer numeroDaSolicitacao = 10;
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(numeroDaSolicitacao, "BRL", new BigDecimal(10)));
+    public void naoDeveCriarSolicitacaoDePagamentoComNumeroDeSolicitacaoMenorQue8Digitos() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(0, "BRL", new BigDecimal(10)));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(10, "BRL", new BigDecimal(10)));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(123, "BRL", new BigDecimal(10)));
     }
 
     @Test
