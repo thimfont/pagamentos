@@ -15,6 +15,10 @@ public class Imposto {
         this.valor = valor;
     }
 
+    public TipoDeImposto getTipo() {
+        return tipo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
