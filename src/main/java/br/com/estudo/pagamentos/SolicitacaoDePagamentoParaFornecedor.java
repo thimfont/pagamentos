@@ -6,13 +6,16 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SolicitacaoDePagamentoParaFornecedor {
+public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento {
     private Documento documento;
-    private Set<Parcela> parcelas;
+    private Set<Parcela> parcelas = new HashSet<>();
 
-    public SolicitacaoDePagamentoParaFornecedor(TipoDeDocumento tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento) {
+    public SolicitacaoDePagamentoParaFornecedor(Integer numero, String moeda, BigDecimal total) {
+        super(numero, moeda, total);
+    }
+
+    public void adicionaDocumento(TipoDeDocumento tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento) {
         this.documento = new Documento(tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento, formaDePagamento);
-        this.parcelas = new HashSet<>();
     }
 
     public void adicionaParcela(int numero, LocalDate vencimento, BigDecimal valor) {
