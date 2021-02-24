@@ -16,4 +16,20 @@ public class TestaPagamentoFornecedor {
         boleto.adicionaParcela(2, LocalDate.now(), new BigDecimal(20));
         Assertions.assertEquals(2, boleto.getParcelas().size());
     }
+
+    @Test
+    public void seVencimentoParaPagamentoEhMenorQue3DiasDeveriaSerTratadoComoUrgente() {
+        SolicitacaoDePagamentoParaFornecedor boleto = FabricaSolicitacaoDePagamento.paraFornecedor();
+        LocalDate vencimento = LocalDate.now().plusDays(2);
+        boleto.adicionaParcela(1, vencimento, new BigDecimal("200"));
+        Assertions.assertEquals(true, boleto.ehUrgente());
+    }
+
+    @Test
+    public void seVencimentoParaPagamentoEhMaiorOuIgualAh3DiasNaoEhUrgente() {
+        SolicitacaoDePagamentoParaFornecedor boleto = FabricaSolicitacaoDePagamento.paraFornecedor();
+        LocalDate vencimento = LocalDate.now().plusDays(3);
+        boleto.adicionaParcela(1, vencimento, new BigDecimal("200"));
+        Assertions.assertEquals(false, boleto.ehUrgente());
+    }
 }
