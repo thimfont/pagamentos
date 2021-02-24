@@ -8,7 +8,7 @@ import java.util.*;
 public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento {
     private Documento documento;
     private Set<Parcela> parcelas = new HashSet<>();
-    private Set<Imposto> impostos;
+    private Set<Imposto> impostos = new HashSet<>();
 
     public SolicitacaoDePagamentoParaFornecedor(Integer numero, String moeda, BigDecimal total) {
         super(numero, moeda, total);
@@ -24,6 +24,14 @@ public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento
 
     public Set<Parcela> getParcelas() {
         return Collections.unmodifiableSet(parcelas);
+    }
+
+    public void adicionaImposto(TipoDeImposto tipoDeImposto, BigDecimal valor) {
+        this.impostos.add(new Imposto(tipoDeImposto, valor));
+    }
+
+    public Set<Imposto> getImpostos() {
+        return Collections.unmodifiableSet(impostos);
     }
 
     public boolean ehUrgente() {

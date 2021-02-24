@@ -24,6 +24,14 @@ public class TestaPagamentoFornecedor {
     }
 
     @Test
+    public void naoDeveriaCadastrarOMesmoImpostoDuasVezes() {
+        boleto.adicionaImposto(TipoDeImposto.INSS, new BigDecimal("10"));
+        boleto.adicionaImposto(TipoDeImposto.INSS, new BigDecimal("10"));
+        boleto.adicionaImposto(TipoDeImposto.PIS, new BigDecimal("5"));
+        Assertions.assertEquals(2, boleto.getImpostos().size());
+    }
+
+    @Test
     public void seVencimentoParaPagamentoEhMenorQue3DiasDeveriaSerTratadoComoUrgente() {
         LocalDate vencimento = LocalDate.now().plusDays(2);
         boleto.adicionaParcela(1, vencimento, new BigDecimal("200"));
