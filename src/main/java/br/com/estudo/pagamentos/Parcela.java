@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Parcela {
+class Parcela {
     private int numero;
     private LocalDate vencimento;
     private BigDecimal valor;
@@ -16,6 +16,15 @@ public class Parcela {
         this.numero = numero;
         this.vencimento = vencimento;
         this.valor = valor;
+    }
+
+    @Override
+    public String toString() {
+        return "Parcela{" +
+                "numero=" + numero +
+                ", vencimento=" + vencimento +
+                ", valor=" + valor +
+                '}';
     }
 
     @Override
