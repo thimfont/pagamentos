@@ -8,9 +8,9 @@ public class SolicitacaoDePagamento {
     private Integer numero;
     private String moeda;
     private BigDecimal total;
-    private LocalDateTime dataDeCadastro;
+    protected LocalDateTime dataDeCadastro;
     private List<String> observacoes;
-    private Status status;
+    protected Status status;
 
     public SolicitacaoDePagamento(Integer numero, String moeda, BigDecimal total) {
         validacao(numero, moeda, total);
