@@ -18,6 +18,10 @@ class Parcela {
         this.valor = valor;
     }
 
+    public LocalDate getVencimento() {
+        return vencimento;
+    }
+
     @Override
     public String toString() {
         return "Parcela{" +
