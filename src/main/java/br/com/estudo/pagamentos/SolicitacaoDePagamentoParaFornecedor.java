@@ -8,6 +8,7 @@ import java.util.*;
 public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento {
     private Documento documento;
     private Set<Parcela> parcelas = new HashSet<>();
+    private Set<Imposto> impostos;
 
     public SolicitacaoDePagamentoParaFornecedor(Integer numero, String moeda, BigDecimal total) {
         super(numero, moeda, total);
