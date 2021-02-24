@@ -2,9 +2,8 @@ package br.com.estudo.pagamentos;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.Period;
+import java.util.*;
 
 public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento {
     private Documento documento;
@@ -24,5 +23,17 @@ public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento
 
     public Set<Parcela> getParcelas() {
         return Collections.unmodifiableSet(parcelas);
+    }
+
+    public boolean ehUrgente() {
+        if (parcelas.isEmpty()) return false;
+
+        List<Parcela> parcelamento = new ArrayList<>(this.parcelas);
+        parcelamento.sort(Comparator.comparing(Parcela::getVencimento));
+        Parcela primeiraParcela = parcelamento.get(0);
+
+        int diasParaOPagamento = Period.between(dataDeCadastro.toLocalDate(), primeiraParcela.getVencimento()).getDays();
+        if (diasParaOPagamento < 3 && status.equals(Status.ENVIADO_PARA_GESTOR)) return true;
+        else return false;
     }
 }
