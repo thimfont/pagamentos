@@ -34,6 +34,10 @@ public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento
         return Collections.unmodifiableSet(impostos);
     }
 
+    public BigDecimal totalDeImpostos() {
+        return impostos.stream().map(i -> i.getValor()).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
     public boolean ehUrgente() {
         if (parcelas.isEmpty()) return false;
 

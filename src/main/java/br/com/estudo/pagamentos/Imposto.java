@@ -19,6 +19,10 @@ public class Imposto {
         return tipo;
     }
 
+    public BigDecimal getValor() {
+        return valor;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
