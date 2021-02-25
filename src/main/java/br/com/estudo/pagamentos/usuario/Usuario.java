@@ -1,6 +1,8 @@
 package br.com.estudo.pagamentos.usuario;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Usuario {
@@ -19,6 +21,7 @@ public class Usuario {
 
         this.nome = nome;
         this.email = email;
+        this.perfis = new HashSet<>();
         adicionaPerfil(perfis);
     }
 
@@ -29,5 +32,9 @@ public class Usuario {
     public void adicionaPerfil(Perfil perfil) {
         if (perfil == null) throw new IllegalArgumentException("Perfil do usuário não pode ser nulo.");
         this.perfis.add(perfil);
+    }
+
+    public Set<Perfil> getPerfis() {
+        return Collections.unmodifiableSet(perfis);
     }
 }

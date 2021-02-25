@@ -41,6 +41,29 @@ public class TestaUsuario {
         String emailComHifeNoDominio = "teste@teste-exemplo.com";
         Usuario usuario3 = new Usuario("Teste", emailComHifeNoDominio, new Perfil(TipoDePerfil.USUARIO));
         Assertions.assertEquals(emailComHifeNoDominio, usuario3.getEmail());
+    }
 
+    @Test
+    public void naoDeveriaCadastrarDoisPerfisIguaisParaOUsuario() {
+        Perfil perfil = new Perfil(TipoDePerfil.USUARIO);
+        Usuario usuario = new Usuario("Teste", "teste@teste.com", perfil);
+        usuario.adicionaPerfil(perfil);
+
+        Perfil perfilIgual = new Perfil(TipoDePerfil.USUARIO);
+        usuario.adicionaPerfil(perfilIgual);
+
+        Assertions.assertEquals(1, usuario.getPerfis().size());
+    }
+
+    @Test
+    public void deveriaCadastrarDiversosPerfisDiferentesParaOUsuario() {
+        Perfil perfilUsuario = new Perfil(TipoDePerfil.USUARIO);
+        Usuario usuario = new Usuario("Teste", "teste@teste.com", perfilUsuario);
+        usuario.adicionaPerfil(new Perfil(TipoDePerfil.GERENTE));
+
+        Perfil perfilFinanceiro = new Perfil(TipoDePerfil.FINANCEIRO);
+        usuario.adicionaPerfil(perfilFinanceiro);
+
+        Assertions.assertEquals(3, usuario.getPerfis().size());
     }
 }
