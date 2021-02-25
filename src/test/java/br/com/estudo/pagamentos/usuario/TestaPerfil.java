@@ -55,4 +55,23 @@ public class TestaPerfil {
         perfilFinanceiro.adicionaPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO);
         Assertions.assertEquals(true, perfilFinanceiro.possuiPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO));
     }
+
+    @Test
+    public void naoDeveIncluirPapelDiferenteDeAprovarPagamentoQuandoPerfilForGerente() {
+        Perfil perfilGerente = new Perfil(TipoDePerfil.GERENTE);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> perfilGerente.adicionaPapel(Papel.SOLICITAR_PAGAMENTO));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> perfilGerente.adicionaPapel(Papel.ADMINISTRAR_CENTROS_DE_CUSTO));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> perfilGerente.adicionaPapel(Papel.ADMINISTRAR_CONTAS_GERENCIAIS));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> perfilGerente.adicionaPapel(Papel.ADMINISTRAR_FORNECEDORES));
+    }
+
+    @Test
+    public void deveIncluirPapelParaPerfilGerente() {
+        Perfil perfilGerente = new Perfil(TipoDePerfil.GERENTE);
+        perfilGerente.adicionaPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO);
+        perfilGerente.adicionaPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO_EM_EXCECAO);
+
+        Assertions.assertEquals(true, perfilGerente.possuiPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO));
+        Assertions.assertEquals(true, perfilGerente.possuiPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO_EM_EXCECAO));
+    }
 }
