@@ -21,6 +21,7 @@ public class Usuario {
 
         this.nome = nome;
         this.email = email;
+        this.dataDeCadastro = LocalDateTime.now();
         this.perfis = new HashSet<>();
         adicionaPerfil(perfis);
     }
