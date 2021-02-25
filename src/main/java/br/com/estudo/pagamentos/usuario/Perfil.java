@@ -20,4 +20,8 @@ public class Perfil {
 
         this.papeis.add(funcao);
     }
+
+    public boolean possuiPapel(Papel funcao) {
+        return papeis.contains(funcao);
+    }
 }

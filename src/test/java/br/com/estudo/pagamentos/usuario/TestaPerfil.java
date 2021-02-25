@@ -14,4 +14,11 @@ public class TestaPerfil {
         Assertions.assertThrows(IllegalArgumentException.class, () -> perfilUsuario.adicionaPapel(Papel.ADMINISTRAR_CONTAS_GERENCIAIS));
         Assertions.assertThrows(IllegalArgumentException.class, () -> perfilUsuario.adicionaPapel(Papel.ADMINISTRAR_FORNECEDORES));
     }
+
+    @Test
+    public void deveIncluirPapelParaPerfilUsuario() {
+        Perfil perfilUsuario = new Perfil(TipoDePerfil.USUARIO);
+        perfilUsuario.adicionaPapel(Papel.SOLICITAR_PAGAMENTO);
+        Assertions.assertEquals(true, perfilUsuario.possuiPapel(Papel.SOLICITAR_PAGAMENTO));
+    }
 }
