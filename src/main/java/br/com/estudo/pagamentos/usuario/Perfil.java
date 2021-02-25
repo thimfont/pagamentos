@@ -14,6 +14,10 @@ public class Perfil {
 
     public void adicionaPapel(Papel funcao) {
         if (funcao == null) throw new IllegalArgumentException("Função do perfil do usuário não pode ser nula.");
+
+        if (nome.equals(TipoDePerfil.USUARIO) && !funcao.equals(Papel.SOLICITAR_PAGAMENTO))
+            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + funcao);
+
         this.papeis.add(funcao);
     }
 }
