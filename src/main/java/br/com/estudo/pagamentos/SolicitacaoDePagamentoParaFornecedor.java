@@ -39,7 +39,7 @@ public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento
     }
 
     public boolean ehUrgente() {
-        if (parcelas.isEmpty() && !status.equals(Status.ENVIADO_PARA_GESTOR)) return false;
+        if (parcelas.isEmpty() || !status.equals(Status.ENVIADO_PARA_GESTOR)) return false;
         Parcela primeiraParcela = extraiPrimeiraParcela();
         return menosDeTresDiasParaPagar(primeiraParcela);
     }
