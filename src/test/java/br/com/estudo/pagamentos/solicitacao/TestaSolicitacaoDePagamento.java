@@ -1,4 +1,4 @@
-package br.com.estudo.pagamentos;
+package br.com.estudo.pagamentos.solicitacao;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

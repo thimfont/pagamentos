@@ -1,5 +1,7 @@
 package br.com.estudo.pagamentos;
 
+import br.com.estudo.pagamentos.solicitacao.fornecedor.Imposto;
+import br.com.estudo.pagamentos.solicitacao.fornecedor.TipoDeImposto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

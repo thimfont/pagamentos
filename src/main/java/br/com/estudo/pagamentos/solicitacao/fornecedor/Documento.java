@@ -1,4 +1,4 @@
-package br.com.estudo.pagamentos;
+package br.com.estudo.pagamentos.solicitacao.fornecedor;
 
 import java.time.LocalDate;
 

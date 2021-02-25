@@ -1,4 +1,7 @@
-package br.com.estudo.pagamentos;
+package br.com.estudo.pagamentos.solicitacao.fornecedor;
+
+import br.com.estudo.pagamentos.solicitacao.SolicitacaoDePagamento;
+import br.com.estudo.pagamentos.solicitacao.Status;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

@@ -1,5 +1,7 @@
-package br.com.estudo.pagamentos;
+package br.com.estudo.pagamentos.solicitacao.fornecedor;
 
+import br.com.estudo.pagamentos.solicitacao.FabricaSolicitacaoDePagamento;
+import br.com.estudo.pagamentos.solicitacao.Status;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

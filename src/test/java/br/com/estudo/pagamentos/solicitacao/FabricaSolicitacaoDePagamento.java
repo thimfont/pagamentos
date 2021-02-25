@@ -1,4 +1,6 @@
-package br.com.estudo.pagamentos;
+package br.com.estudo.pagamentos.solicitacao;
+
+import br.com.estudo.pagamentos.solicitacao.fornecedor.SolicitacaoDePagamentoParaFornecedor;
 
 import java.math.BigDecimal;
 
