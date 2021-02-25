@@ -29,6 +29,12 @@ public class Perfil {
                 && !funcao.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO_EM_EXCECAO))
             throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + funcao);
 
+        if (nome.equals(TipoDePerfil.ADMINISTRADOR)
+                && !funcao.equals(Papel.ADMINISTRAR_CENTROS_DE_CUSTO)
+                && !funcao.equals(Papel.ADMINISTRAR_CONTAS_GERENCIAIS)
+                && !funcao.equals(Papel.ADMINISTRAR_FORNECEDORES))
+            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + funcao);
+
         this.papeis.add(funcao);
     }
 
