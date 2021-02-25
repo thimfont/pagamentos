@@ -39,14 +39,21 @@ public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento
     }
 
     public boolean ehUrgente() {
-        if (parcelas.isEmpty()) return false;
+        if (parcelas.isEmpty() && !status.equals(Status.ENVIADO_PARA_GESTOR)) return false;
+        Parcela primeiraParcela = extraiPrimeiraParcela();
+        return menosDeTresDiasParaPagar(primeiraParcela);
+    }
 
+    private boolean menosDeTresDiasParaPagar(Parcela primeiraParcela) {
+        int diasParaOPagamento = Period.between(dataDeCadastro.toLocalDate(), primeiraParcela.getVencimento()).getDays();
+        if (diasParaOPagamento < 3) return true;
+        else return false;
+    }
+
+    private Parcela extraiPrimeiraParcela() {
         List<Parcela> parcelamento = new ArrayList<>(this.parcelas);
         parcelamento.sort(Comparator.comparing(Parcela::getVencimento));
         Parcela primeiraParcela = parcelamento.get(0);
-
-        int diasParaOPagamento = Period.between(dataDeCadastro.toLocalDate(), primeiraParcela.getVencimento()).getDays();
-        if (diasParaOPagamento < 3 && status.equals(Status.ENVIADO_PARA_GESTOR)) return true;
-        else return false;
+        return primeiraParcela;
     }
 }
