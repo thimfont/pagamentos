@@ -21,4 +21,21 @@ public class TestaPerfil {
         perfilUsuario.adicionaPapel(Papel.SOLICITAR_PAGAMENTO);
         Assertions.assertEquals(true, perfilUsuario.possuiPapel(Papel.SOLICITAR_PAGAMENTO));
     }
+
+    @Test
+    public void naoDeveIncluirPapelDiferenteDeAprovarPagamentoQuandoPerfilForContabilidade() {
+        Perfil perfilContabilidade = new Perfil(TipoDePerfil.CONTABILIDADE);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> perfilContabilidade.adicionaPapel(Papel.SOLICITAR_PAGAMENTO));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> perfilContabilidade.adicionaPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO_EM_EXCECAO));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> perfilContabilidade.adicionaPapel(Papel.ADMINISTRAR_CENTROS_DE_CUSTO));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> perfilContabilidade.adicionaPapel(Papel.ADMINISTRAR_CONTAS_GERENCIAIS));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> perfilContabilidade.adicionaPapel(Papel.ADMINISTRAR_FORNECEDORES));
+    }
+
+    @Test
+    public void deveIncluirPapelParaPerfilContabilidade() {
+        Perfil perfilUsuario = new Perfil(TipoDePerfil.CONTABILIDADE);
+        perfilUsuario.adicionaPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO);
+        Assertions.assertEquals(true, perfilUsuario.possuiPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO));
+    }
 }

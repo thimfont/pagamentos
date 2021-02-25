@@ -18,6 +18,9 @@ public class Perfil {
         if (nome.equals(TipoDePerfil.USUARIO) && !funcao.equals(Papel.SOLICITAR_PAGAMENTO))
             throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + funcao);
 
+        if (nome.equals(TipoDePerfil.CONTABILIDADE) && !funcao.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO))
+            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + funcao);
+
         this.papeis.add(funcao);
     }
 
