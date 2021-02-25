@@ -6,9 +6,10 @@ public class Usuario {
     private String nome;
     private String email;
     private LocalDateTime dataDeCadastro;
+    private Perfil perfil;
 
-    public Usuario(String nome, String email) {
-        if (nome == null || email == null)
+    public Usuario(String nome, String email, Perfil perfil) {
+        if (nome == null || email == null || perfil == null)
             throw new IllegalArgumentException("Dados obrigatórios do usuário não podem ser nulos");
         if (nome.isEmpty() || email.isEmpty())
             throw new IllegalArgumentException("Dados obrigatórios do usuário não podem ser vazios");
@@ -17,6 +18,7 @@ public class Usuario {
 
         this.nome = nome;
         this.email = email;
+        this.perfil = perfil;
     }
 
     public String getEmail() {
