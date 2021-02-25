@@ -47,6 +47,14 @@ public class TestaPagamentoFornecedor {
     }
 
     @Test
+    public void seVencimentoParaPagamentoEhMenorQue3DiasMasJahFoiAprovadoPeloGestorNaoDeveSerTratadoComoUrgente() {
+        boleto.setStatus(Status.ENVIADO_PARA_FINANCEIRO);
+        LocalDate vencimento = LocalDate.now().plusDays(2);
+        boleto.adicionaParcela(1, vencimento, new BigDecimal("200"));
+        Assertions.assertEquals(false, boleto.ehUrgente());
+    }
+
+    @Test
     public void seVencimentoParaPagamentoEhMaiorOuIgualAh3DiasNaoEhUrgente() {
         LocalDate vencimento = LocalDate.now().plusDays(3);
         boleto.adicionaParcela(1, vencimento, new BigDecimal("200"));
