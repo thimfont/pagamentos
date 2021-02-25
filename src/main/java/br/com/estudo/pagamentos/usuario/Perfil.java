@@ -1,6 +1,7 @@
 package br.com.estudo.pagamentos.usuario;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Perfil {
@@ -40,5 +41,18 @@ public class Perfil {
 
     public boolean possuiPapel(Papel funcao) {
         return papeis.contains(funcao);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Perfil perfil = (Perfil) o;
+        return nome == perfil.nome;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
     }
 }
