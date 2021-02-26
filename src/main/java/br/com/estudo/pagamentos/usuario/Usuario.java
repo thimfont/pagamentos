@@ -11,8 +11,8 @@ public class Usuario {
     private LocalDateTime dataDeCadastro;
     private Set<Perfil> perfis;
 
-    public Usuario(String nome, String email, Perfil perfis) {
-        if (nome == null || email == null || perfis == null)
+    public Usuario(String nome, String email, Perfil perfil) {
+        if (nome == null || email == null || perfil == null)
             throw new IllegalArgumentException("Dados obrigatórios do usuário não podem ser nulos");
         if (nome.isEmpty() || email.isEmpty())
             throw new IllegalArgumentException("Dados obrigatórios do usuário não podem ser vazios");
@@ -23,7 +23,7 @@ public class Usuario {
         this.email = email;
         this.dataDeCadastro = LocalDateTime.now();
         this.perfis = new HashSet<>();
-        adicionaPerfil(perfis);
+        adicionaPerfil(perfil);
     }
 
     public String getEmail() {
