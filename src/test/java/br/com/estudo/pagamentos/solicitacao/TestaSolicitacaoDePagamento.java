@@ -52,4 +52,9 @@ public class TestaSolicitacaoDePagamento {
         SolicitacaoDePagamento solicitacao = new SolicitacaoDePagamento(numeroDaSolicitacao, "BRL", new BigDecimal(10), solicitante);
         Assertions.assertEquals(numeroDaSolicitacao, solicitacao.getNumero());
     }
+
+    @Test
+    public void naoDeveCriarSolicitacaoDePagamentoSemUsuarioSolicitante() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(12345678, "BRL", new BigDecimal("10"), null));
+    }
 }

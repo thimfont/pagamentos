@@ -16,7 +16,7 @@ public class SolicitacaoDePagamento {
     private Usuario solicitante;
 
     public SolicitacaoDePagamento(Integer numero, String moeda, BigDecimal total, Usuario solicitante) {
-        validacao(numero, moeda, total);
+        validacao(numero, moeda, total, solicitante);
         this.numero = numero;
         this.moeda = moeda;
         this.total = total;
@@ -25,8 +25,9 @@ public class SolicitacaoDePagamento {
         this.solicitante = solicitante;
     }
 
-    private void validacao(Integer numeroDaSolicitacao, String tipoDeMoeda, BigDecimal valorTotal) {
-        if (numeroDaSolicitacao == null || tipoDeMoeda == "" || tipoDeMoeda == null || valorTotal == null
+    private void validacao(Integer numeroDaSolicitacao, String tipoDeMoeda, BigDecimal valorTotal, Usuario solicitante) {
+        if (numeroDaSolicitacao == null || tipoDeMoeda == "" || tipoDeMoeda == null
+                || valorTotal == null || solicitante == null
         ) throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
 
         if (numeroDaSolicitacao == 0 || valorTotal.intValue() == 0)
