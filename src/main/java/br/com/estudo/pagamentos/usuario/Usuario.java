@@ -11,7 +11,7 @@ public class Usuario {
     private LocalDateTime dataDeCadastro;
     private Set<Perfil> perfis;
 
-    public Usuario(String nome, String email, Perfil perfil) {
+    public Usuario(String nome, String email, TipoDePerfil perfil) {
         if (nome == null || email == null || perfil == null)
             throw new IllegalArgumentException("Dados obrigatórios do usuário não podem ser nulos");
         if (nome.isEmpty() || email.isEmpty())
@@ -30,9 +30,9 @@ public class Usuario {
         return email;
     }
 
-    public void adicionaPerfil(Perfil perfil) {
+    public void adicionaPerfil(TipoDePerfil perfil) {
         if (perfil == null) throw new IllegalArgumentException("Perfil do usuário não pode ser nulo.");
-        this.perfis.add(perfil);
+        this.perfis.add(new Perfil(perfil));
     }
 
     public Set<Perfil> getPerfis() {
