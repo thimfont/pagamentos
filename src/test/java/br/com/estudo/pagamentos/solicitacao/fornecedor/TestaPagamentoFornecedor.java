@@ -2,6 +2,8 @@ package br.com.estudo.pagamentos.solicitacao.fornecedor;
 
 import br.com.estudo.pagamentos.solicitacao.FabricaSolicitacaoDePagamento;
 import br.com.estudo.pagamentos.solicitacao.Status;
+import br.com.estudo.pagamentos.usuario.FabricaUsuarioParaTeste;
+import br.com.estudo.pagamentos.usuario.Usuario;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +16,8 @@ public class TestaPagamentoFornecedor {
 
     @BeforeEach
     public void setupAntesDeCadaTeste() {
-        boleto = FabricaSolicitacaoDePagamento.paraFornecedor();
+        Usuario solicitante = FabricaUsuarioParaTeste.solicitante();
+        boleto = FabricaSolicitacaoDePagamento.paraFornecedor(solicitante);
     }
 
     @Test
