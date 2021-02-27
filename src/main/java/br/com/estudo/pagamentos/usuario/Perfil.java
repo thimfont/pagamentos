@@ -18,6 +18,10 @@ public class Perfil {
         if (nome.equals(TipoDePerfil.USUARIO)) this.papeis.add(Papel.SOLICITAR_PAGAMENTO);
         if (nome.equals(TipoDePerfil.CONTABILIDADE)) this.papeis.add(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO);
         if (nome.equals(TipoDePerfil.FINANCEIRO)) this.papeis.add(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO);
+        if (nome.equals(TipoDePerfil.GERENTE)) {
+            this.papeis.add(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO);
+            this.papeis.add(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO_EM_EXCECAO);
+        }
     }
 
 

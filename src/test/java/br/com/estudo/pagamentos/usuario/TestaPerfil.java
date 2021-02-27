@@ -65,9 +65,6 @@ public class TestaPerfil {
     @Test
     public void deveIncluirPapelParaPerfilGerente() {
         Perfil perfilGerente = new Perfil(TipoDePerfil.GERENTE);
-        perfilGerente.adicionaPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO);
-        perfilGerente.adicionaPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO_EM_EXCECAO);
-
         Assertions.assertEquals(true, perfilGerente.possuiPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO));
         Assertions.assertEquals(true, perfilGerente.possuiPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO_EM_EXCECAO));
     }
