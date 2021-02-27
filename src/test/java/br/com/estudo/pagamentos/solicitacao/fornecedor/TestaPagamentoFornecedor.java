@@ -14,7 +14,7 @@ public class TestaPagamentoFornecedor {
 
     @BeforeEach
     public void setupAntesDeCadaTeste() {
-        boleto = FabricaSolicitacaoDePagamento.paraFornecedor();
+        boleto = FabricaSolicitacaoDePagamento.paraFornecedor(null);
     }
 
     @Test
