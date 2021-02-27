@@ -50,7 +50,6 @@ public class TestaPerfil {
     @Test
     public void deveIncluirPapelParaPerfilFinanceiro() {
         Perfil perfilFinanceiro = new Perfil(TipoDePerfil.FINANCEIRO);
-        perfilFinanceiro.adicionaPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO);
         Assertions.assertEquals(true, perfilFinanceiro.possuiPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO));
     }
 
