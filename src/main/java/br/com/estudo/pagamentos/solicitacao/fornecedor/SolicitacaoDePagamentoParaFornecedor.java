@@ -2,6 +2,7 @@ package br.com.estudo.pagamentos.solicitacao.fornecedor;
 
 import br.com.estudo.pagamentos.solicitacao.SolicitacaoDePagamento;
 import br.com.estudo.pagamentos.solicitacao.Status;
+import br.com.estudo.pagamentos.usuario.Usuario;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,9 +14,10 @@ public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento
     private Set<Parcela> parcelas = new HashSet<>();
     private Set<Imposto> impostos = new HashSet<>();
 
-    public SolicitacaoDePagamentoParaFornecedor(Integer numero, String moeda, BigDecimal total) {
-        super(numero, moeda, total);
+    public SolicitacaoDePagamentoParaFornecedor(Integer numero, String moeda, BigDecimal total, Usuario solicitante) {
+        super(numero, moeda, total, solicitante);
     }
+
 
     public void adicionaDocumento(TipoDeDocumento tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento) {
         this.documento = new Documento(tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento, formaDePagamento);
