@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Perfil {
+class Perfil {
     private TipoDePerfil nome;
     private Set<Papel> papeis;
 
