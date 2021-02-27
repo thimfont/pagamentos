@@ -14,6 +14,7 @@ public class SolicitacaoDePagamento {
     private List<String> observacoes;
     protected Status status;
     private Usuario solicitante;
+    private Usuario aprovador;
 
     public SolicitacaoDePagamento(Integer numero, String moeda, BigDecimal total, Usuario solicitante) {
         validacao(numero, moeda, total, solicitante);
@@ -47,5 +48,10 @@ public class SolicitacaoDePagamento {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public void setAprovador(Usuario aprovador) {
+        if (aprovador == null) throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
+        this.aprovador = aprovador;
     }
 }
