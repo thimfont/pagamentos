@@ -16,6 +16,7 @@ public class Perfil {
     private void geraPapeis() {
         this.papeis = new HashSet<>();
         if (nome.equals(TipoDePerfil.USUARIO)) this.papeis.add(Papel.SOLICITAR_PAGAMENTO);
+        if (nome.equals(TipoDePerfil.CONTABILIDADE)) this.papeis.add(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO);
     }
 
 

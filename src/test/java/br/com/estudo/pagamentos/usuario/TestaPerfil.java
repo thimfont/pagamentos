@@ -34,7 +34,6 @@ public class TestaPerfil {
     @Test
     public void deveIncluirPapelParaPerfilContabilidade() {
         Perfil perfilContabilidade = new Perfil(TipoDePerfil.CONTABILIDADE);
-        perfilContabilidade.adicionaPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO);
         Assertions.assertEquals(true, perfilContabilidade.possuiPapel(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO));
     }
 
