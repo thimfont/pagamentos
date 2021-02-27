@@ -10,8 +10,14 @@ public class Perfil {
 
     public Perfil(TipoDePerfil nome) {
         this.nome = nome;
-        this.papeis = new HashSet<>();
+        geraPapeis();
     }
+
+    private void geraPapeis() {
+        this.papeis = new HashSet<>();
+        if (nome.equals(TipoDePerfil.USUARIO)) this.papeis.add(Papel.SOLICITAR_PAGAMENTO);
+    }
+
 
     public void adicionaPapel(Papel funcao) {
         if (funcao == null) throw new IllegalArgumentException("Função do perfil do usuário não pode ser nula.");
