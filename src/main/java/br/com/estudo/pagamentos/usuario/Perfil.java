@@ -22,6 +22,11 @@ public class Perfil {
             this.papeis.add(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO);
             this.papeis.add(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO_EM_EXCECAO);
         }
+        if (nome.equals(TipoDePerfil.ADMINISTRADOR)) {
+            this.papeis.add(Papel.ADMINISTRAR_CENTROS_DE_CUSTO);
+            this.papeis.add(Papel.ADMINISTRAR_CONTAS_GERENCIAIS);
+            this.papeis.add(Papel.ADMINISTRAR_FORNECEDORES);
+        }
     }
 
 

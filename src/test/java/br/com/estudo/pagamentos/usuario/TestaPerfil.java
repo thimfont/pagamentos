@@ -80,10 +80,6 @@ public class TestaPerfil {
     @Test
     public void deveIncluirPapelParaPerfilAdministrador() {
         Perfil perfilAdministrador = new Perfil(TipoDePerfil.ADMINISTRADOR);
-        perfilAdministrador.adicionaPapel(Papel.ADMINISTRAR_CONTAS_GERENCIAIS);
-        perfilAdministrador.adicionaPapel(Papel.ADMINISTRAR_CENTROS_DE_CUSTO);
-        perfilAdministrador.adicionaPapel(Papel.ADMINISTRAR_FORNECEDORES);
-
         Assertions.assertEquals(true, perfilAdministrador.possuiPapel(Papel.ADMINISTRAR_CONTAS_GERENCIAIS));
         Assertions.assertEquals(true, perfilAdministrador.possuiPapel(Papel.ADMINISTRAR_CENTROS_DE_CUSTO));
         Assertions.assertEquals(true, perfilAdministrador.possuiPapel(Papel.ADMINISTRAR_FORNECEDORES));
