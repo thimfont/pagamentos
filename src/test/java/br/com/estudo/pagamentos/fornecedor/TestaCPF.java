@@ -14,8 +14,14 @@ public class TestaCPF {
     public void naoDeveriaCriarCPFMauFormatado() {
         String cnpj = "91.375.860/0001-65";
         Assertions.assertThrows(IllegalArgumentException.class, () -> new CPF(cnpj));
-        String cpf = "4.09.139.290-34";
+        String cpf = "409.139.290.34";
         Assertions.assertThrows(IllegalArgumentException.class, () -> new CPF(cpf));
+        String cpfComBarras = "409/139/290/34";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new CPF(cpfComBarras));
+        String cpfComLetras = "409.139A.290-34";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new CPF(cpfComLetras));
+        String cpfComTracos = "409-139A-290-34";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new CPF(cpfComTracos));
     }
 
     @Test
