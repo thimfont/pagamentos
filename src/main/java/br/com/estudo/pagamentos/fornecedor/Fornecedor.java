@@ -4,6 +4,7 @@ public class Fornecedor {
     private String nome;
     private String inscricaoEstatual;
     private Numero cnpjOuCpf;
+    private Endereco endereco;
     private String nomeDoPais;
     private String siglaDoPais;
     private String estado;
