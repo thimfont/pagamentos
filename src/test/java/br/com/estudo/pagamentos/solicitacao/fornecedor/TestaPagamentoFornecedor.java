@@ -1,5 +1,7 @@
 package br.com.estudo.pagamentos.solicitacao.fornecedor;
 
+import br.com.estudo.pagamentos.fornecedor.FabricaFornecedorParaTeste;
+import br.com.estudo.pagamentos.fornecedor.Fornecedor;
 import br.com.estudo.pagamentos.solicitacao.FabricaSolicitacaoDePagamento;
 import br.com.estudo.pagamentos.solicitacao.Status;
 import br.com.estudo.pagamentos.usuario.FabricaUsuarioParaTeste;
@@ -17,7 +19,8 @@ public class TestaPagamentoFornecedor {
     @BeforeEach
     public void setupAntesDeCadaTeste() {
         Usuario solicitante = FabricaUsuarioParaTeste.solicitante();
-        boleto = FabricaSolicitacaoDePagamento.paraFornecedor(solicitante);
+        Fornecedor fornecedor = FabricaFornecedorParaTeste.tipoJuridico();
+        boleto = FabricaSolicitacaoDePagamento.paraFornecedor(solicitante, fornecedor);
     }
 
     @Test
