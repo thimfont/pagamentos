@@ -18,4 +18,16 @@ public class ContaBancaria {
         this.numero = conta;
         this.estaAtiva = true;
     }
+
+    public String getCodigoDoBanco() {
+        return codigoDoBanco;
+    }
+
+    public String getAgencia() {
+        return agencia;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
 }
