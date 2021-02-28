@@ -3,8 +3,6 @@ package br.com.estudo.pagamentos.fornecedor;
 public class Fornecedor {
     private String nome;
     private String inscricaoEstatual;
-    private String cnpj;
-    private String cpf;
     private Numero cnpjOuCpf;
     private String nomeDoPais;
     private String siglaDoPais;
@@ -21,9 +19,8 @@ public class Fornecedor {
     private boolean contaDoBancoEstaAtiva;
     private String status;
 
-    public Fornecedor(String nome, String cnpj, String cpf) {
+    public Fornecedor(String nome, Numero numero) {
         this.nome = nome;
-        this.cnpj = cnpj;
-        this.cpf = cpf;
+        this.cnpjOuCpf = numero;
     }
 }
