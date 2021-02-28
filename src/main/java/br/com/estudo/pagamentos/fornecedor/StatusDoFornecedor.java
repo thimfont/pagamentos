@@ -1,5 +1,5 @@
 package br.com.estudo.pagamentos.fornecedor;
 
-public enum StatusDoFornecedor {
+enum StatusDoFornecedor {
     EM_ANALISE, APROVADO, REPROVADO
 }
