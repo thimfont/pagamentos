@@ -14,8 +14,14 @@ public class TestaCNPJ {
     public void naoDeveriaCriarCNPJMauFormatado() {
         String cpf = "409.139.290-34";
         Assertions.assertThrows(IllegalArgumentException.class, () -> new CNPJ(cpf));
+        String cnpjComFormatacaoErrada = "91.375.860.0001-65";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new CNPJ(cnpjComFormatacaoErrada));
         String cnpjComPontuacaoErrada = "9.1375.860/0001-65";
         Assertions.assertThrows(IllegalArgumentException.class, () -> new CNPJ(cnpjComPontuacaoErrada));
+        String cnpjComPontuacaoDuplicada = "9.1375..860/0001-65";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new CNPJ(cnpjComPontuacaoDuplicada));
+        String cnpjComBarrasDuplicada = "91.375/860/0001-65";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new CNPJ(cnpjComBarrasDuplicada));
     }
 
     @Test
@@ -23,7 +29,7 @@ public class TestaCNPJ {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new CNPJ("91.375.860/A001-65"));
         Assertions.assertThrows(IllegalArgumentException.class, () -> new CNPJ("91375860A00165"));
     }
-    
+
     @Test
     public void deveriaCriarCNPJQuandoIndependenteSeONumeroEstiverFormatadoOuNao() {
         CNPJ cnpjFormatado = new CNPJ("91.375.860/0001-65");
