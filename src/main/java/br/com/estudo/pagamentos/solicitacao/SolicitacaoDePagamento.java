@@ -1,5 +1,6 @@
 package br.com.estudo.pagamentos.solicitacao;
 
+import br.com.estudo.pagamentos.fornecedor.Fornecedor;
 import br.com.estudo.pagamentos.usuario.Usuario;
 
 import java.math.BigDecimal;
@@ -15,20 +16,22 @@ public class SolicitacaoDePagamento {
     protected Status status;
     private Usuario solicitante;
     private Usuario aprovador;
+    private Fornecedor fornecedor;
 
-    public SolicitacaoDePagamento(Integer numero, String moeda, BigDecimal total, Usuario solicitante) {
-        validacao(numero, moeda, total, solicitante);
+    public SolicitacaoDePagamento(Integer numero, String moeda, BigDecimal total, Usuario solicitante, Fornecedor fornecedor) {
+        validacao(numero, moeda, total, solicitante, fornecedor);
         this.numero = numero;
         this.moeda = moeda;
         this.total = total;
+        this.fornecedor = fornecedor;
         this.dataDeCadastro = LocalDateTime.now();
         this.status = Status.ENVIADO_PARA_GESTOR;
         this.solicitante = solicitante;
     }
 
-    private void validacao(Integer numeroDaSolicitacao, String tipoDeMoeda, BigDecimal valorTotal, Usuario solicitante) {
+    private void validacao(Integer numeroDaSolicitacao, String tipoDeMoeda, BigDecimal valorTotal, Usuario solicitante, Fornecedor fornecedor) {
         if (numeroDaSolicitacao == null || tipoDeMoeda == "" || tipoDeMoeda == null
-                || valorTotal == null || solicitante == null
+                || valorTotal == null || solicitante == null || fornecedor == null
         ) throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
 
         if (numeroDaSolicitacao == 0 || valorTotal.intValue() == 0)
