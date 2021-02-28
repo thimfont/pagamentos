@@ -9,6 +9,8 @@ public class Fornecedor {
     private String status;
 
     public Fornecedor(String nome, Numero numero) {
+        if (numero == null)
+            throw new IllegalArgumentException("Não é possível cadastrar um CPF ou CNPJ null para fornecedor.");
         this.nome = nome;
         this.cnpjOuCpf = numero;
     }
