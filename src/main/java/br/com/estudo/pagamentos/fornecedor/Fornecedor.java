@@ -5,11 +5,7 @@ public class Fornecedor {
     private String inscricaoEstatual;
     private Numero cnpjOuCpf;
     private Endereco endereco;
-    private String codigoDoBanco;
-    private String nomeDoBanco;
-    private String agenciaDoBanco;
-    private String contaDoBanco;
-    private boolean contaDoBancoEstaAtiva;
+    private ContaBancaria conta;
     private String status;
 
     public Fornecedor(String nome, Numero numero) {
