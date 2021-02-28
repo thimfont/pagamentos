@@ -6,7 +6,7 @@ public class Fornecedor {
     private Numero cnpjOuCpf;
     private Endereco endereco;
     private ContaBancaria conta;
-    private String status;
+    private StatusDoFornecedor status;
     private TipoDeFornecedor tipo;
 
     public Fornecedor(Numero numero, TipoDeFornecedor tipo) {
@@ -15,6 +15,7 @@ public class Fornecedor {
             throw new IllegalArgumentException("Não é possível cadastrar um CPF ou CNPJ null para fornecedor.");
         this.cnpjOuCpf = numero;
         this.tipo = tipo;
+        this.status = StatusDoFornecedor.EM_ANALISE;
     }
 
     public void cadastra(Endereco endereco) {
