@@ -12,7 +12,7 @@ import java.time.Period;
 public class SolicitacaoDePagamentoParaColaborador extends SolicitacaoDePagamento {
     private LocalDate vencimento;
     private String finalidade;
-    private String tipo;
+    private Tipo tipo;
 
     public SolicitacaoDePagamentoParaColaborador(Integer numero, String moeda, BigDecimal total, Usuario solicitante, Fornecedor fornecedor) {
         super(numero, moeda, total, solicitante, fornecedor);
