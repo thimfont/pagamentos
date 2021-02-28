@@ -1,9 +1,7 @@
 package br.com.estudo.pagamentos.solicitacao;
 
-import br.com.estudo.pagamentos.fornecedor.CNPJ;
 import br.com.estudo.pagamentos.fornecedor.FabricaFornecedorParaTeste;
 import br.com.estudo.pagamentos.fornecedor.Fornecedor;
-import br.com.estudo.pagamentos.fornecedor.TipoDeFornecedor;
 import br.com.estudo.pagamentos.usuario.FabricaUsuarioParaTeste;
 import br.com.estudo.pagamentos.usuario.Usuario;
 import org.junit.jupiter.api.Assertions;
@@ -62,5 +60,10 @@ public class TestaSolicitacaoDePagamento {
     @Test
     public void naoDeveCriarSolicitacaoDePagamentoSemUsuarioSolicitante() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(12345678, "BRL", new BigDecimal("10"), null, fornecedor));
+    }
+
+    @Test
+    public void naoDeveCriarSolicitacaoDePagamentoSemFornecedor() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(12345678, "BRL", new BigDecimal("10"), solicitante, null));
     }
 }
