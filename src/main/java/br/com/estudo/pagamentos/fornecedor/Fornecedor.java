@@ -7,8 +7,10 @@ public class Fornecedor {
     private Endereco endereco;
     private ContaBancaria conta;
     private String status;
+    private TipoDeFornecedor tipo;
 
-    public Fornecedor(String nome, Numero numero) {
+    public Fornecedor(String nome, Numero numero, TipoDeFornecedor tipo) {
+        if (tipo == null) throw new IllegalArgumentException("Não é possível cadastrar um fornecedor sem o tipo.");
         if (numero == null)
             throw new IllegalArgumentException("Não é possível cadastrar um CPF ou CNPJ null para fornecedor.");
         this.nome = nome;
