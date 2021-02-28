@@ -1,8 +1,7 @@
 package br.com.estudo.pagamentos.fornecedor;
 
 public class Endereco {
-    private String nomeDoPais;
-    private String siglaDoPais;
+    private String pais;
     private String estado;
     private String cidade;
     private String bairro;
