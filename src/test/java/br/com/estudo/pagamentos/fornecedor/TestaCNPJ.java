@@ -19,6 +19,12 @@ public class TestaCNPJ {
     }
 
     @Test
+    public void naoDeveriaCriarCNPJContendoLetras() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new CNPJ("91.375.860/A001-65"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new CNPJ("91375860A00165"));
+    }
+    
+    @Test
     public void deveriaCriarCNPJQuandoIndependenteSeONumeroEstiverFormatadoOuNao() {
         CNPJ cnpjFormatado = new CNPJ("91.375.860/0001-65");
         Assertions.assertEquals("91.375.860/0001-65", cnpjFormatado.getNumero());
