@@ -6,19 +6,15 @@ public class Endereco {
     private String estado;
     private String cidade;
     private String bairro;
-    private String cep;
+    private CEP cep;
     private String logradouro;
     private String complemento;
 
     public Endereco(String cep) {
-        if (cep == null || cep == "") throw new IllegalArgumentException("CEP não pode ser nulo ou vazio");
-        if (!cep.matches("[0-9]{5}\\-?[0-9]{3}"))
-            throw new IllegalArgumentException("CEP invlálido");
-
-        this.cep = cep;
+        this.cep = new CEP(cep);
     }
 
     public String getCep() {
-        return cep;
+        return cep.getNumero();
     }
 }
