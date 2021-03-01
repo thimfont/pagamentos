@@ -52,6 +52,7 @@ public class TestaPagamentoFornecedor {
         LocalDate vencimento = LocalDate.now().plusDays(2);
         boleto.adicionaParcela(1, vencimento, new BigDecimal("200"));
         Assertions.assertEquals(true, boleto.ehUrgente());
+        Assertions.assertEquals(Status.ENVIADO_PARA_GESTOR, boleto.getStatus());
     }
 
     @Test
