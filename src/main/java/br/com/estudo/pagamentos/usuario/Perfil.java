@@ -1,11 +1,20 @@
 package br.com.estudo.pagamentos.usuario;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Entity
 class Perfil {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Enumerated(EnumType.STRING)
     private TipoDePerfil nome;
+    @ElementCollection(targetClass = Papel.class)
+    @JoinTable(joinColumns = @JoinColumn(name = "id_perfil"))
+    @Enumerated(EnumType.STRING)
     private Set<Papel> papeis;
 
     public Perfil(TipoDePerfil nome) {
@@ -30,34 +39,34 @@ class Perfil {
     }
 
 
-    public void adicionaPapel(Papel funcao) {
-        if (funcao == null) throw new IllegalArgumentException("Função do perfil do usuário não pode ser nula.");
+    public void adicionaPapel(Papel papel) {
+        if (papel == null) throw new IllegalArgumentException("Função do perfil do usuário não pode ser nula.");
 
-        if (nome.equals(TipoDePerfil.USUARIO) && !funcao.equals(Papel.SOLICITAR_PAGAMENTO))
-            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + funcao);
+        if (nome.equals(TipoDePerfil.USUARIO) && !papel.equals(Papel.SOLICITAR_PAGAMENTO))
+            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + papel);
 
-        if (nome.equals(TipoDePerfil.CONTABILIDADE) && !funcao.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO))
-            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + funcao);
+        if (nome.equals(TipoDePerfil.CONTABILIDADE) && !papel.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO))
+            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + papel);
 
-        if (nome.equals(TipoDePerfil.FINANCEIRO) && !funcao.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO))
-            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + funcao);
+        if (nome.equals(TipoDePerfil.FINANCEIRO) && !papel.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO))
+            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + papel);
 
         if (nome.equals(TipoDePerfil.GERENTE)
-                && !funcao.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO)
-                && !funcao.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO_EM_EXCECAO))
-            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + funcao);
+                && !papel.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO)
+                && !papel.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO_EM_EXCECAO))
+            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + papel);
 
         if (nome.equals(TipoDePerfil.ADMINISTRADOR)
-                && !funcao.equals(Papel.ADMINISTRAR_CENTROS_DE_CUSTO)
-                && !funcao.equals(Papel.ADMINISTRAR_CONTAS_GERENCIAIS)
-                && !funcao.equals(Papel.ADMINISTRAR_FORNECEDORES))
-            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + funcao);
+                && !papel.equals(Papel.ADMINISTRAR_CENTROS_DE_CUSTO)
+                && !papel.equals(Papel.ADMINISTRAR_CONTAS_GERENCIAIS)
+                && !papel.equals(Papel.ADMINISTRAR_FORNECEDORES))
+            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + papel);
 
-        this.papeis.add(funcao);
+        this.papeis.add(papel);
     }
 
-    public boolean possuiPapel(Papel funcao) {
-        return papeis.contains(funcao);
+    public boolean possuiPapel(Papel papel) {
+        return papeis.contains(papel);
     }
 
     @Override
