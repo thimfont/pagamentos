@@ -1,14 +1,23 @@
 package br.com.estudo.pagamentos.usuario;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
 public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
+    @Column(unique = true)
     private String email;
+    @Column(name = "data_cadastro")
     private LocalDateTime dataDeCadastro;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_perfil"))
     private Set<Perfil> perfis;
 
     public Usuario(String nome, String email, TipoDePerfil perfil) {
