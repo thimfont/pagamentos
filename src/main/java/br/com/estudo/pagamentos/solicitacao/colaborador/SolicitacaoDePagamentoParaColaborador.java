@@ -18,6 +18,10 @@ public class SolicitacaoDePagamentoParaColaborador extends SolicitacaoDePagament
         super(numero, moeda, total, solicitante, fornecedor);
     }
 
+    public void setVencimento(LocalDate vencimento) {
+        this.vencimento = vencimento;
+    }
+
     public boolean ehUrgente() {
         if (!status.equals(Status.ENVIADO_PARA_GESTOR)) return false;
         return menosDeCincoDiasParaPagar();

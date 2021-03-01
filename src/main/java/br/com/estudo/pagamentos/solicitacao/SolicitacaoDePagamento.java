@@ -53,6 +53,10 @@ public class SolicitacaoDePagamento {
         this.status = status;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
     public void setAprovador(Usuario aprovador) {
         if (aprovador == null) throw new IllegalArgumentException("Dados obrigatórios não podem ser vazios ou nulos.");
         this.aprovador = aprovador;
