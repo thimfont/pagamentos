@@ -8,18 +8,15 @@ import br.com.estudo.pagamentos.usuario.Usuario;
 import java.math.BigDecimal;
 
 public class FabricaSolicitacaoDePagamento {
+    private static final Integer numero = 12345678;
+    private static final String moeda = "BRL";
+    private static final BigDecimal total = new BigDecimal("250");
 
     public static SolicitacaoDePagamentoParaFornecedor paraFornecedor(Usuario solicitante, Fornecedor fornecedor) {
-        Integer numero = 12345678;
-        String moeda = "BRL";
-        BigDecimal total = new BigDecimal("250");
         return new SolicitacaoDePagamentoParaFornecedor(numero, moeda, total, solicitante, fornecedor);
     }
 
     public static SolicitacaoDePagamentoParaColaborador paraColaborador(Usuario solicitante, Fornecedor fornecedor) {
-        Integer numero = 12345678;
-        String moeda = "BRL";
-        BigDecimal total = new BigDecimal("250");
         return new SolicitacaoDePagamentoParaColaborador(numero, moeda, total, solicitante, fornecedor);
     }
 }
