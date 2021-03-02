@@ -18,6 +18,7 @@ class Perfil {
     private Set<Papel> papeis;
 
     public Perfil(TipoDePerfil nome) {
+        if (nome == null) throw new IllegalArgumentException("Tipo do perfil não pode ser nulo.");
         this.nome = nome;
         geraPapeis();
     }
@@ -38,35 +39,8 @@ class Perfil {
         }
     }
 
-
-    public void adicionaPapel(Papel papel) {
-        if (papel == null) throw new IllegalArgumentException("Função do perfil do usuário não pode ser nula.");
-
-        if (nome.equals(TipoDePerfil.USUARIO) && !papel.equals(Papel.SOLICITAR_PAGAMENTO))
-            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + papel);
-
-        if (nome.equals(TipoDePerfil.CONTABILIDADE) && !papel.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO))
-            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + papel);
-
-        if (nome.equals(TipoDePerfil.FINANCEIRO) && !papel.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO))
-            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + papel);
-
-        if (nome.equals(TipoDePerfil.GERENTE)
-                && !papel.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO)
-                && !papel.equals(Papel.APROVAR_SOLICITACAO_DE_PAGAMENTO_EM_EXCECAO))
-            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + papel);
-
-        if (nome.equals(TipoDePerfil.ADMINISTRADOR)
-                && !papel.equals(Papel.ADMINISTRAR_CENTROS_DE_CUSTO)
-                && !papel.equals(Papel.ADMINISTRAR_CONTAS_GERENCIAIS)
-                && !papel.equals(Papel.ADMINISTRAR_FORNECEDORES))
-            throw new IllegalArgumentException("Perfil " + nome + "não pode ter função " + papel);
-
-        this.papeis.add(papel);
-    }
-
-    public boolean possuiPapel(Papel papel) {
-        return papeis.contains(papel);
+    public boolean possuiPapel(Papel funcao) {
+        return papeis.contains(funcao);
     }
 
     @Override
