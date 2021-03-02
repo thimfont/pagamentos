@@ -1,7 +1,11 @@
 package br.com.estudo.pagamentos.solicitacao.fornecedor;
 
+import br.com.estudo.pagamentos.fornecedor.FabricaFornecedorParaTeste;
+import br.com.estudo.pagamentos.fornecedor.Fornecedor;
 import br.com.estudo.pagamentos.solicitacao.FabricaSolicitacaoDePagamento;
 import br.com.estudo.pagamentos.solicitacao.Status;
+import br.com.estudo.pagamentos.usuario.FabricaUsuarioParaTeste;
+import br.com.estudo.pagamentos.usuario.Usuario;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +18,9 @@ public class TestaPagamentoFornecedor {
 
     @BeforeEach
     public void setupAntesDeCadaTeste() {
-        boleto = FabricaSolicitacaoDePagamento.paraFornecedor();
+        Usuario solicitante = FabricaUsuarioParaTeste.solicitante();
+        Fornecedor fornecedor = FabricaFornecedorParaTeste.tipoJuridico();
+        boleto = FabricaSolicitacaoDePagamento.paraFornecedor(solicitante, fornecedor);
     }
 
     @Test
@@ -46,6 +52,7 @@ public class TestaPagamentoFornecedor {
         LocalDate vencimento = LocalDate.now().plusDays(2);
         boleto.adicionaParcela(1, vencimento, new BigDecimal("200"));
         Assertions.assertEquals(true, boleto.ehUrgente());
+        Assertions.assertEquals(Status.ENVIADO_PARA_GESTOR, boleto.getStatus());
     }
 
     @Test
