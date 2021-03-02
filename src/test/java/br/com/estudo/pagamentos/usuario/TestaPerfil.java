@@ -4,6 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TestaPerfil {
+
+    @Test
+    public void naoDeveGerarPerfilQuandoTipoForNulo() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Perfil(null));
+    }
+
     @Test
     public void deveIncluirPapelParaPerfilUsuario() {
         Perfil perfilUsuario = new Perfil(TipoDePerfil.USUARIO);

@@ -9,6 +9,7 @@ class Perfil {
     private Set<Papel> papeis;
 
     public Perfil(TipoDePerfil nome) {
+        if (nome == null) throw new IllegalArgumentException("Tipo do perfil não pode ser nulo.");
         this.nome = nome;
         geraPapeis();
     }
