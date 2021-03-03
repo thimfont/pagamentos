@@ -14,7 +14,7 @@ public class TestaFornecedor {
     @Test
     public void deveriaCriarFornecedor() {
         Fornecedor fornecedor = new Fornecedor( new CPF("40913929034"), TipoDeFornecedor.FORNECEDOR_FISICO);
-        Assertions.assertEquals("40913929034", fornecedor.getNumero());
+        Assertions.assertEquals("40913929034", fornecedor.getDocumento());
         Assertions.assertEquals(TipoDeFornecedor.FORNECEDOR_FISICO, fornecedor.getTipo());
     }
 }

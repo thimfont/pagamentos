@@ -1,5 +1,5 @@
 package br.com.estudo.pagamentos.fornecedor;
 
-public interface Numero {
+public interface Documento {
     String getNumero();
 }

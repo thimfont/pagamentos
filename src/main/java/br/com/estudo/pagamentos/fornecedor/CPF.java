@@ -1,6 +1,6 @@
 package br.com.estudo.pagamentos.fornecedor;
 
-public class CPF implements Numero {
+public class CPF implements Documento {
     private String cpf;
 
     public CPF(String cpf) {

@@ -1,6 +1,6 @@
 package br.com.estudo.pagamentos.fornecedor;
 
-public class CNPJ implements Numero {
+public class CNPJ implements Documento {
     private String cnpj;
 
     public CNPJ(String cnpj) {

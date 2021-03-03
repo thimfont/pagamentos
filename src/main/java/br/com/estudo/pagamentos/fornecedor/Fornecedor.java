@@ -3,17 +3,17 @@ package br.com.estudo.pagamentos.fornecedor;
 public class Fornecedor {
     private String nome;
     private String inscricaoEstatual;
-    private Numero cnpjOuCpf;
+    private Documento documento;
     private Endereco endereco;
     private ContaBancaria conta;
     private StatusDoFornecedor status;
     private TipoDeFornecedor tipo;
 
-    public Fornecedor(Numero numero, TipoDeFornecedor tipo) {
+    public Fornecedor(Documento documento, TipoDeFornecedor tipo) {
         if (tipo == null) throw new IllegalArgumentException("Não é possível cadastrar um fornecedor sem o tipo.");
-        if (numero == null)
+        if (documento == null)
             throw new IllegalArgumentException("Não é possível cadastrar um CPF ou CNPJ null para fornecedor.");
-        this.cnpjOuCpf = numero;
+        this.documento = documento;
         this.tipo = tipo;
         this.status = StatusDoFornecedor.EM_ANALISE;
     }
@@ -34,8 +34,8 @@ public class Fornecedor {
         return nome;
     }
 
-    public String getNumero() {
-        return cnpjOuCpf.getNumero();
+    public String getDocumento() {
+        return documento.getNumero();
     }
 
     public TipoDeFornecedor getTipo() {
