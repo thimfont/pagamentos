@@ -1,7 +1,14 @@
 package br.com.estudo.pagamentos.fornecedor;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 class CEP {
     private String numero;
+
+    @Deprecated
+    CEP() {
+    }
 
     public CEP(String numero) {
         if (numero == null || numero == "") throw new IllegalArgumentException("CEP não pode ser nulo ou vazio");

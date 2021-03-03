@@ -11,7 +11,7 @@ public class Endereco {
     private String estado;
     private String cidade;
     private String bairro;
-    @Transient
+    @Embedded
     private CEP cep;
     private String logradouro;
     private String complemento;
