@@ -1,6 +1,13 @@
 package br.com.estudo.pagamentos.fornecedor;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "conta_bancaria")
 public class ContaBancaria {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String codigoDoBanco;
     private String nomeDoBanco;
     private String agencia;
@@ -29,5 +36,17 @@ public class ContaBancaria {
 
     public String getNumero() {
         return numero;
+    }
+
+    public void setNomeDoBanco(String nomeDoBanco) {
+        this.nomeDoBanco = nomeDoBanco;
+    }
+
+    public String getNomeDoBanco() {
+        return nomeDoBanco;
+    }
+
+    public boolean isEstaAtiva() {
+        return estaAtiva;
     }
 }
