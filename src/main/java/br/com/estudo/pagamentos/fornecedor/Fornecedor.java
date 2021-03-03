@@ -2,6 +2,7 @@ package br.com.estudo.pagamentos.fornecedor;
 
 import br.com.estudo.pagamentos.fornecedor.documento.Documento;
 import br.com.estudo.pagamentos.fornecedor.documento.TipoDeDocumento;
+import br.com.estudo.pagamentos.fornecedor.endereco.Endereco;
 
 public class Fornecedor {
     private String nome;
