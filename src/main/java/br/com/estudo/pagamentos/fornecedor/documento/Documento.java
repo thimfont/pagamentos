@@ -1,4 +1,4 @@
-package br.com.estudo.pagamentos.fornecedor;
+package br.com.estudo.pagamentos.fornecedor.documento;
 
 public interface Documento {
     TipoDeDocumento getTipo();

@@ -1,5 +1,8 @@
 package br.com.estudo.pagamentos.fornecedor;
 
+import br.com.estudo.pagamentos.fornecedor.documento.Documento;
+import br.com.estudo.pagamentos.fornecedor.documento.TipoDeDocumento;
+
 public class Fornecedor {
     private String nome;
     private String inscricaoEstatual;

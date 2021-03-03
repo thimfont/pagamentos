@@ -1,5 +1,7 @@
 package br.com.estudo.pagamentos.fornecedor;
 
+import br.com.estudo.pagamentos.fornecedor.documento.CNPJ;
+import br.com.estudo.pagamentos.fornecedor.documento.CPF;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
