@@ -1,4 +1,4 @@
-package br.com.estudo.pagamentos.fornecedor;
+package br.com.estudo.pagamentos.fornecedor.conta;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

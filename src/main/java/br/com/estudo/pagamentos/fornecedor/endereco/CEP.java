@@ -1,4 +1,4 @@
-package br.com.estudo.pagamentos.fornecedor;
+package br.com.estudo.pagamentos.fornecedor.endereco;
 
 import javax.persistence.Embeddable;
 

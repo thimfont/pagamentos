@@ -1,5 +1,7 @@
 package br.com.estudo.pagamentos.fornecedor;
 
+import br.com.estudo.pagamentos.fornecedor.endereco.Endereco;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
