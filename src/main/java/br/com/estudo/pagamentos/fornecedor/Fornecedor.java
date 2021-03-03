@@ -20,11 +20,18 @@ public class Fornecedor {
     @Enumerated(EnumType.STRING)
     private TipoDeFornecedor tipo;
 
-    public Fornecedor(Numero numero, TipoDeFornecedor tipo) {
+    public Fornecedor(Documento documento, TipoDeFornecedor tipo) {
         if (tipo == null) throw new IllegalArgumentException("Não é possível cadastrar um fornecedor sem o tipo.");
-        if (numero == null)
+        if (documento == null)
             throw new IllegalArgumentException("Não é possível cadastrar um CPF ou CNPJ null para fornecedor.");
-        this.documento = numero.getNumero();
+
+        if (TipoDeFornecedor.FORNECEDOR_FISICO.equals(tipo) && !TipoDeDocumento.CPF.equals(documento.getTipo()))
+            throw new IllegalArgumentException("Não é possível criar um fornecedor jurídico com um número de CPF");
+
+        if (TipoDeFornecedor.FORNECEDOR_JURIDICO.equals(tipo) && !TipoDeDocumento.CNPJ.equals(documento.getTipo()))
+            throw new IllegalArgumentException("Não é possível criar um fornecedor físico com um número de CNPJ");
+
+        this.documento = documento.getNumero();
         this.tipo = tipo;
         this.status = StatusDoFornecedor.EM_ANALISE;
     }

@@ -9,13 +9,13 @@ public class TestaCriacaoDeFornecedoresComJPA {
         ContaBancaria conta = getContaBancaria();
         Endereco endereco = getEndereco();
 
-        Numero cpf = new CPF("78945612398");
+        Documento cpf = new CPF("78945612398");
         Fornecedor pessoaFisica = new Fornecedor(cpf, TipoDeFornecedor.FORNECEDOR_FISICO);
         pessoaFisica.setNome("thiago");
         pessoaFisica.cadastra(conta);
         pessoaFisica.cadastra(endereco);
 
-        Numero cnpj = new CNPJ("12345678945123");
+        Documento cnpj = new CNPJ("12345678945123");
         Fornecedor pessoaJuridica = new Fornecedor(cnpj, TipoDeFornecedor.FORNECEDOR_JURIDICO);
         pessoaJuridica.setNome("google");
         pessoaJuridica.cadastra(conta);
