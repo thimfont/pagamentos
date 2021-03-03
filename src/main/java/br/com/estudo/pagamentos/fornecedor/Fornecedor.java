@@ -10,8 +10,7 @@ public class Fornecedor {
     private String nome;
     @Column(name = "inscricao_estadual")
     private String inscricaoEstatual;
-    @Transient
-    private Numero cnpjOuCpf;
+    private String documento;
     @OneToOne(fetch = FetchType.LAZY)
     private Endereco endereco;
     @OneToOne(fetch = FetchType.LAZY)
@@ -25,7 +24,7 @@ public class Fornecedor {
         if (tipo == null) throw new IllegalArgumentException("Não é possível cadastrar um fornecedor sem o tipo.");
         if (numero == null)
             throw new IllegalArgumentException("Não é possível cadastrar um CPF ou CNPJ null para fornecedor.");
-        this.cnpjOuCpf = numero;
+        this.documento = numero.getNumero();
         this.tipo = tipo;
         this.status = StatusDoFornecedor.EM_ANALISE;
     }
@@ -58,8 +57,8 @@ public class Fornecedor {
         return nome;
     }
 
-    public String getNumero() {
-        return cnpjOuCpf.getNumero();
+    public String getDocumento() {
+        return documento;
     }
 
     public TipoDeFornecedor getTipo() {
