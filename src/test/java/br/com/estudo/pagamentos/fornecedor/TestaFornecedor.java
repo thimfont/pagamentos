@@ -21,7 +21,7 @@ public class TestaFornecedor {
     @Test
     public void deveriaCriarFornecedorFisicoComDocumentoCPF() {
         Fornecedor fornecedor = new Fornecedor(new CPF("40913929034"), TipoDeFornecedor.FORNECEDOR_FISICO);
-        Assertions.assertEquals("40913929034", fornecedor.getDocumento());
+        Assertions.assertEquals("40913929034", fornecedor.getNumero());
         Assertions.assertEquals(TipoDeFornecedor.FORNECEDOR_FISICO, fornecedor.getTipo());
     }
 
@@ -33,7 +33,7 @@ public class TestaFornecedor {
     @Test
     public void deveriaCriarFornecedorJuridicoComDocumentoCNPJ() {
         Fornecedor fornecedor = new Fornecedor(new CNPJ("91375860000165"), TipoDeFornecedor.FORNECEDOR_JURIDICO);
-        Assertions.assertEquals("91375860000165", fornecedor.getDocumento());
+        Assertions.assertEquals("91375860000165", fornecedor.getNumero());
         Assertions.assertEquals(TipoDeFornecedor.FORNECEDOR_JURIDICO, fornecedor.getTipo());
     }
 }

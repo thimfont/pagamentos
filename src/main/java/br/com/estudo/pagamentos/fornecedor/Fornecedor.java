@@ -15,7 +15,7 @@ public class Fornecedor {
     private String nome;
     @Column(name = "inscricao_estadual")
     private String inscricaoEstatual;
-    private String documento;
+    private String numero;
     @OneToOne(fetch = FetchType.LAZY)
     private Endereco endereco;
     @OneToOne(fetch = FetchType.LAZY)
@@ -25,18 +25,18 @@ public class Fornecedor {
     @Enumerated(EnumType.STRING)
     private TipoDeFornecedor tipo;
 
-    public Fornecedor(Documento documento, TipoDeFornecedor tipo) {
+    public Fornecedor(Documento numero, TipoDeFornecedor tipo) {
         if (tipo == null) throw new IllegalArgumentException("Não é possível cadastrar um fornecedor sem o tipo.");
-        if (documento == null)
+        if (numero == null)
             throw new IllegalArgumentException("Não é possível cadastrar um CPF ou CNPJ null para fornecedor.");
 
-        if (TipoDeFornecedor.FORNECEDOR_FISICO.equals(tipo) && !TipoDeDocumento.CPF.equals(documento.getTipo()))
+        if (TipoDeFornecedor.FORNECEDOR_FISICO.equals(tipo) && !TipoDeDocumento.CPF.equals(numero.getTipo()))
             throw new IllegalArgumentException("Não é possível criar um fornecedor jurídico com um número de CPF");
 
-        if (TipoDeFornecedor.FORNECEDOR_JURIDICO.equals(tipo) && !TipoDeDocumento.CNPJ.equals(documento.getTipo()))
+        if (TipoDeFornecedor.FORNECEDOR_JURIDICO.equals(tipo) && !TipoDeDocumento.CNPJ.equals(numero.getTipo()))
             throw new IllegalArgumentException("Não é possível criar um fornecedor físico com um número de CNPJ");
 
-        this.documento = documento.getNumero();
+        this.numero = numero.getNumero();
         this.tipo = tipo;
         this.status = StatusDoFornecedor.EM_ANALISE;
     }
@@ -69,8 +69,8 @@ public class Fornecedor {
         return nome;
     }
 
-    public String getDocumento() {
-        return documento;
+    public String getNumero() {
+        return numero;
     }
 
     public TipoDeFornecedor getTipo() {
