@@ -11,6 +11,11 @@ public class CPF implements Documento {
     }
 
     @Override
+    public TipoDeDocumento getTipo() {
+        return TipoDeDocumento.CPF;
+    }
+
+    @Override
     public String getNumero() {
         return this.cpf;
     }

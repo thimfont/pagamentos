@@ -11,6 +11,11 @@ public class CNPJ implements Documento {
     }
 
     @Override
+    public TipoDeDocumento getTipo() {
+        return TipoDeDocumento.CNPJ;
+    }
+
+    @Override
     public String getNumero() {
         return this.cnpj;
     }
