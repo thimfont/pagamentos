@@ -1,4 +1,4 @@
-package br.com.estudo.pagamentos.fornecedor;
+package br.com.estudo.pagamentos.fornecedor.conta;
 
 public class ContaBancaria {
     private String codigoDoBanco;
