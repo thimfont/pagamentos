@@ -1,12 +1,24 @@
 package br.com.estudo.pagamentos.fornecedor;
 
+import javax.persistence.*;
+
+@Entity
 public class Fornecedor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
+    @Column(name = "inscricao_estadual")
     private String inscricaoEstatual;
+    @Transient
     private Numero cnpjOuCpf;
+    @OneToOne(fetch = FetchType.LAZY)
     private Endereco endereco;
+    @OneToOne(fetch = FetchType.LAZY)
     private ContaBancaria conta;
+    @Enumerated(EnumType.STRING)
     private StatusDoFornecedor status;
+    @Enumerated(EnumType.STRING)
     private TipoDeFornecedor tipo;
 
     public Fornecedor(Numero numero, TipoDeFornecedor tipo) {
@@ -28,6 +40,18 @@ public class Fornecedor {
         if (conta == null)
             throw new IllegalArgumentException("Não é possível cadastrar um conta bancária null para fornecedor.");
         this.conta = conta;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setInscricaoEstatual(String inscricaoEstatual) {
+        this.inscricaoEstatual = inscricaoEstatual;
+    }
+
+    public String getInscricaoEstatual() {
+        return inscricaoEstatual;
     }
 
     public String getNome() {
