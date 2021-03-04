@@ -1,8 +1,14 @@
 package br.com.estudo.pagamentos.solicitacao.fornecedor;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
 class Documento {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Enumerated(EnumType.STRING)
     private TipoDeDocumento tipo;
     private Integer numero;
     private LocalDate dataDeEmissao;
