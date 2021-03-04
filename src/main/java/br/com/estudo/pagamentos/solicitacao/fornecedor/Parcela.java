@@ -1,14 +1,23 @@
 package br.com.estudo.pagamentos.solicitacao.fornecedor;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
 class Parcela {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private int numero;
     private LocalDate vencimento;
     private BigDecimal valor;
 
+    //TODO: poderia encapsular o bigdecimal para receber um valor double (10.0)
     public Parcela(int numero, LocalDate vencimento, BigDecimal valor) {
         if (numero == 0 || vencimento == null || valor == null)
             throw new IllegalArgumentException("Dados obrigatórios não podem ser zero ou nulos.");
