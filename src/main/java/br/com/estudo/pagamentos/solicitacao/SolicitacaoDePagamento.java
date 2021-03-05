@@ -12,6 +12,7 @@ public class SolicitacaoDePagamento {
     private String moeda;
     private BigDecimal total;
     protected LocalDateTime dataDeCadastro;
+    // TODO: Criar um objeto para representar observações
     private List<String> observacoes;
     protected Status status;
     private Usuario solicitante;
