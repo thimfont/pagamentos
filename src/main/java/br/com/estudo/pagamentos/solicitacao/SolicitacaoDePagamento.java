@@ -14,6 +14,7 @@ public class SolicitacaoDePagamento {
     protected LocalDateTime dataDeCadastro;
     // TODO: Criar um objeto para representar observações
     private List<String> observacoes;
+    private List<Observacao> observacao;
     protected Status status;
     private Usuario solicitante;
     private Usuario aprovador;
