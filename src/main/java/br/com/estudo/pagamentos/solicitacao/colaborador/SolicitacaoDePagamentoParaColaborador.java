@@ -5,13 +5,18 @@ import br.com.estudo.pagamentos.solicitacao.SolicitacaoDePagamento;
 import br.com.estudo.pagamentos.solicitacao.Status;
 import br.com.estudo.pagamentos.usuario.Usuario;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 
+@Entity
+@Table(name = "solicitacao_de_pagamento_para_colaborador")
+@PrimaryKeyJoinColumn(name = "id_solicitacao_de_pagamento")
 public class SolicitacaoDePagamentoParaColaborador extends SolicitacaoDePagamento {
     private LocalDate vencimento;
     private String finalidade;
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
 
     public SolicitacaoDePagamentoParaColaborador(Integer numero, String moeda, BigDecimal total, Usuario solicitante, Fornecedor fornecedor) {
