@@ -20,7 +20,6 @@ public class SolicitacaoDePagamento {
     private BigDecimal total;
     @Column(name = "data_cadastro")
     protected LocalDateTime dataDeCadastro;
-    // TODO: Criar um objeto para representar observações
     @ElementCollection
     @JoinTable(name = "solicitacao_de_pagamento_observacoes", joinColumns = @JoinColumn(name = "id_solicitacao_de_pagamento"))
     private List<String> observacoes;
