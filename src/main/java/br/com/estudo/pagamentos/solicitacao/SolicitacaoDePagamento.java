@@ -12,7 +12,7 @@ public class SolicitacaoDePagamento {
     private String moeda;
     private BigDecimal total;
     protected LocalDateTime dataDeCadastro;
-    private List<String> observacoes;
+    private List<Observacao> observacoes;
     protected Status status;
     private Usuario solicitante;
     private Usuario aprovador;
@@ -39,6 +39,12 @@ public class SolicitacaoDePagamento {
 
         if (!numeroDaSolicitacao.toString().matches("^\\d{8}$"))
             throw new IllegalArgumentException("Numero da solicitação precisa ter 8 números.");
+    }
+
+    public void adicionaObservacao(Usuario autor, String observacao) {
+        if (autor == null || observacao == null || observacao == "")
+            throw new IllegalArgumentException("Observação deve ter usuário autor e o texto de descrição.");
+        this.observacoes.add(new Observacao(autor, observacao));
     }
 
     public Integer getNumero() {
