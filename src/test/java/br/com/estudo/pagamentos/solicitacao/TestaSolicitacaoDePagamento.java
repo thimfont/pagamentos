@@ -2,6 +2,7 @@ package br.com.estudo.pagamentos.solicitacao;
 
 import br.com.estudo.pagamentos.fornecedor.FabricaFornecedorParaTeste;
 import br.com.estudo.pagamentos.fornecedor.Fornecedor;
+import br.com.estudo.pagamentos.solicitacao.fornecedor.SolicitacaoDePagamentoParaFornecedor;
 import br.com.estudo.pagamentos.usuario.FabricaUsuarioParaTeste;
 import br.com.estudo.pagamentos.usuario.Usuario;
 import org.junit.jupiter.api.Assertions;
@@ -65,5 +66,13 @@ public class TestaSolicitacaoDePagamento {
     @Test
     public void naoDeveCriarSolicitacaoDePagamentoSemFornecedor() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new SolicitacaoDePagamento(12345678, "BRL", new BigDecimal("10"), solicitante, null));
+    }
+
+    @Test
+    public void naoDeveAdicionarObservacaoComValoresNulosOuVaziosNaSolicitacaoDePagamento() {
+        SolicitacaoDePagamentoParaFornecedor solicitacao = FabricaSolicitacaoDePagamento.paraFornecedor(solicitante, fornecedor);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> solicitacao.adicionaObservacao(null, "Esta é uma observação"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> solicitacao.adicionaObservacao(solicitante, null));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> solicitacao.adicionaObservacao(solicitante, ""));
     }
 }
