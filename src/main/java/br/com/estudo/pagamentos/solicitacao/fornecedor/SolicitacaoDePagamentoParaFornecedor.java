@@ -5,20 +5,24 @@ import br.com.estudo.pagamentos.solicitacao.SolicitacaoDePagamento;
 import br.com.estudo.pagamentos.solicitacao.Status;
 import br.com.estudo.pagamentos.usuario.Usuario;
 
-import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 
 @Entity
+@Table(name = "solicitacao_de_pagamento_para_fornecedor")
+@PrimaryKeyJoinColumn(name = "id_solicitacao_de_pagamento")
 public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento {
-    @Transient
+    @JoinColumn(unique = true, name = "id_documento")
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private Documento documento;
-    @Transient
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "id_solicitacao_de_pagamento")
     private Set<Parcela> parcelas = new HashSet<>();
-    @Transient
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "id_solicitacao_de_pagamento")
     private Set<Imposto> impostos = new HashSet<>();
 
     public SolicitacaoDePagamentoParaFornecedor(Integer numero, String moeda, BigDecimal total, Usuario solicitante, Fornecedor fornecedor) {
