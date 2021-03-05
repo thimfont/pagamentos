@@ -3,19 +3,37 @@ package br.com.estudo.pagamentos.solicitacao;
 import br.com.estudo.pagamentos.fornecedor.Fornecedor;
 import br.com.estudo.pagamentos.usuario.Usuario;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "solicitacao_de_pagamento")
 public class SolicitacaoDePagamento {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Integer numero;
     private String moeda;
     private BigDecimal total;
+    @Column(name = "data_cadastro")
     protected LocalDateTime dataDeCadastro;
+    // TODO: Criar um objeto para representar observações
+    @ElementCollection
+    @JoinTable(name = "solicitacao_de_pagamento_observacoes", joinColumns = @JoinColumn(name = "id_solicitacao_de_pagamento"))
     private List<String> observacoes;
+    @Enumerated(EnumType.STRING)
     protected Status status;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario_solicitante")
     private Usuario solicitante;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario_aprovador")
     private Usuario aprovador;
+    @ManyToOne
+    @JoinColumn(name = "id_fornecedor")
     private Fornecedor fornecedor;
 
     public SolicitacaoDePagamento(Integer numero, String moeda, BigDecimal total, Usuario solicitante, Fornecedor fornecedor) {
