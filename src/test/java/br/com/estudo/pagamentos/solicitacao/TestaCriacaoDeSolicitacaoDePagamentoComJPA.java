@@ -17,29 +17,36 @@ import java.time.LocalDate;
 
 public class TestaCriacaoDeSolicitacaoDePagamentoComJPA {
     public static void main(String[] args) {
-        Usuario solicitante = FabricaUsuarioParaTeste.solicitante();
-        Fornecedor fornecedor = FabricaFornecedorParaTeste.tipoJuridico();
-//        SolicitacaoDePagamentoParaFornecedor solicitacao = getSolicitacaoDePagamentoParaFornecedor(solicitante, fornecedor);
-        SolicitacaoDePagamentoParaColaborador solicitacao = getSolicitacaoDePagamentoParaColaborador(solicitante, fornecedor);
-
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pagamentos");
         EntityManager em = emf.createEntityManager();
 
+        Fornecedor fornecedor = FabricaFornecedorParaTeste.tipoJuridico();
+        SolicitacaoDePagamentoParaFornecedor solicitacaoFornecedor = getSolicitacaoDePagamentoParaFornecedor(fornecedor, em);
+        SolicitacaoDePagamentoParaColaborador solicitacaoColaborador = getSolicitacaoDePagamentoParaColaborador(fornecedor, em);
+
         em.getTransaction().begin();
-        em.persist(solicitante);
         em.persist(fornecedor);
-        em.persist(solicitacao);
+        em.persist(solicitacaoFornecedor);
+        em.persist(solicitacaoColaborador);
         em.getTransaction().commit();
         em.close();
     }
 
-    private static SolicitacaoDePagamentoParaColaborador getSolicitacaoDePagamentoParaColaborador(Usuario solicitante, Fornecedor fornecedor) {
+    private static SolicitacaoDePagamentoParaColaborador getSolicitacaoDePagamentoParaColaborador(Fornecedor fornecedor, EntityManager em) {
+        Usuario solicitante = FabricaUsuarioParaTeste.solicitante();
+
+        em.persist(solicitante);
+
         SolicitacaoDePagamentoParaColaborador solicitacao = FabricaSolicitacaoDePagamento.paraColaborador(solicitante, fornecedor);
         solicitacao.setVencimento(LocalDate.now().plusDays(5));
         return solicitacao;
     }
 
-    private static SolicitacaoDePagamentoParaFornecedor getSolicitacaoDePagamentoParaFornecedor(Usuario solicitante, Fornecedor fornecedor) {
+    private static SolicitacaoDePagamentoParaFornecedor getSolicitacaoDePagamentoParaFornecedor(Fornecedor fornecedor, EntityManager em) {
+        Usuario solicitante = FabricaUsuarioParaTeste.solicitante();
+
+        em.persist(solicitante);
+
         SolicitacaoDePagamentoParaFornecedor solicitacao = FabricaSolicitacaoDePagamento.paraFornecedor(solicitante, fornecedor);
         solicitacao.adicionaDocumento(TipoDeDocumento.BOLETO, 123123, LocalDate.now(), "Cartao");
         solicitacao.adicionaParcela(1, LocalDate.now(), new BigDecimal("10"));
