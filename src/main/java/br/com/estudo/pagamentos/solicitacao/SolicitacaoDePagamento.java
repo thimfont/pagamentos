@@ -21,7 +21,7 @@ public class SolicitacaoDePagamento {
     @Column(name = "data_cadastro")
     protected LocalDateTime dataDeCadastro;
     @OneToMany
-    @JoinTable(name = "solicitacao_de_pagamento_observacoes", joinColumns = @JoinColumn(name = "id_solicitacao_de_pagamento"))
+    @JoinColumn(name = "id_solicitacao_de_pagamento")
     private List<Observacao> observacoes;
     protected Status status;
     @ManyToOne
