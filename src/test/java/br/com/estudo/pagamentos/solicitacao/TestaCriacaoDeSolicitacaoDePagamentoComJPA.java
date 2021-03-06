@@ -3,6 +3,7 @@ package br.com.estudo.pagamentos.solicitacao;
 import br.com.estudo.pagamentos.fornecedor.FabricaFornecedorParaTeste;
 import br.com.estudo.pagamentos.fornecedor.Fornecedor;
 import br.com.estudo.pagamentos.solicitacao.colaborador.SolicitacaoDePagamentoParaColaborador;
+import br.com.estudo.pagamentos.solicitacao.fornecedor.FormaDePagamento;
 import br.com.estudo.pagamentos.solicitacao.fornecedor.SolicitacaoDePagamentoParaFornecedor;
 import br.com.estudo.pagamentos.solicitacao.fornecedor.TipoDeDocumento;
 import br.com.estudo.pagamentos.solicitacao.fornecedor.TipoDeImposto;
@@ -48,7 +49,7 @@ public class TestaCriacaoDeSolicitacaoDePagamentoComJPA {
         em.persist(solicitante);
 
         SolicitacaoDePagamentoParaFornecedor solicitacao = FabricaSolicitacaoDePagamento.paraFornecedor(solicitante, fornecedor);
-        solicitacao.adicionaDocumento(TipoDeDocumento.BOLETO, 123123, LocalDate.now(), "Cartao");
+        solicitacao.adicionaDocumento(TipoDeDocumento.BOLETO, 123123, LocalDate.now(), FormaDePagamento.ORDEM_DE_PAGAMENTO);
         solicitacao.adicionaParcela(1, LocalDate.now(), new BigDecimal("10"));
         solicitacao.adicionaParcela(2, LocalDate.now().plusMonths(1), new BigDecimal("10"));
         solicitacao.adicionaImposto(TipoDeImposto.INSS, new BigDecimal("10"));

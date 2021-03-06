@@ -16,7 +16,7 @@ class Parcela {
     private int numero;
     private LocalDate vencimento;
     private BigDecimal valor;
-
+    
     public Parcela(int numero, LocalDate vencimento, BigDecimal valor) {
         if (numero == 0 || vencimento == null || valor == null)
             throw new IllegalArgumentException("Dados obrigatórios não podem ser zero ou nulos.");

@@ -30,7 +30,7 @@ public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento
     }
 
 
-    public void adicionaDocumento(TipoDeDocumento tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, String formaDePagamento) {
+    public void adicionaDocumento(TipoDeDocumento tipoDoDocumento, Integer numeroDoDocumento, LocalDate dataDeEmissaoDoDocumento, FormaDePagamento formaDePagamento) {
         this.documento = new Documento(tipoDoDocumento, numeroDoDocumento, dataDeEmissaoDoDocumento, formaDePagamento);
     }
 

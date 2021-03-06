@@ -20,10 +20,9 @@ public class SolicitacaoDePagamento {
     private BigDecimal total;
     @Column(name = "data_cadastro")
     protected LocalDateTime dataDeCadastro;
-    @ElementCollection
+    @OneToMany
     @JoinTable(name = "solicitacao_de_pagamento_observacoes", joinColumns = @JoinColumn(name = "id_solicitacao_de_pagamento"))
-    private List<String> observacoes;
-    @Enumerated(EnumType.STRING)
+    private List<Observacao> observacoes;
     protected Status status;
     @ManyToOne
     @JoinColumn(name = "id_usuario_solicitante")
@@ -56,6 +55,12 @@ public class SolicitacaoDePagamento {
 
         if (!numeroDaSolicitacao.toString().matches("^\\d{8}$"))
             throw new IllegalArgumentException("Numero da solicitação precisa ter 8 números.");
+    }
+
+    public void adicionaObservacao(Usuario autor, String observacao) {
+        if (autor == null || observacao == null || observacao == "")
+            throw new IllegalArgumentException("Observação deve ter usuário autor e o texto de descrição.");
+        this.observacoes.add(new Observacao(autor, observacao));
     }
 
     public Integer getNumero() {

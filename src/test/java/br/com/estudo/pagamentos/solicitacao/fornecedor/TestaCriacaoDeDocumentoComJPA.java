@@ -10,7 +10,7 @@ public class TestaCriacaoDeDocumentoComJPA {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pagamentos");
         EntityManager em = emf.createEntityManager();
 
-        Documento boleto = new Documento(TipoDeDocumento.BOLETO, 123123, LocalDate.now(), "Cartao");
+        Documento boleto = new Documento(TipoDeDocumento.BOLETO, 123123, LocalDate.now(), FormaDePagamento.CARTÃO_DE_CRÉDITO);
 
         em.getTransaction().begin();
         em.persist(boleto);
