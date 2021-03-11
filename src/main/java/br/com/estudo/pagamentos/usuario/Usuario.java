@@ -20,6 +20,10 @@ public class Usuario {
     @JoinTable(joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_perfil"))
     private Set<Perfil> perfis;
 
+    @Deprecated
+    public Usuario() {
+    }
+
     public Usuario(String nome, String email, TipoDePerfil perfil) {
         if (nome == null || email == null || perfil == null)
             throw new IllegalArgumentException("Dados obrigatórios do usuário não podem ser nulos");
@@ -37,6 +41,10 @@ public class Usuario {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getEmail() {

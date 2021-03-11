@@ -20,7 +20,6 @@ public class UsuarioDao implements UsuarioRepositorio {
         em.getTransaction().begin();
         em.persist(usuario);
         em.getTransaction().commit();
-        em.close();
     }
 
     // TODO: id deveria ser recebido como argumento separado?
@@ -31,7 +30,6 @@ public class UsuarioDao implements UsuarioRepositorio {
         em.getTransaction().begin();
         em.merge(usuario);
         em.getTransaction().commit();
-        em.close();
     }
 
     @Override
@@ -42,8 +40,11 @@ public class UsuarioDao implements UsuarioRepositorio {
         em.getTransaction().begin();
         em.remove(usuario);
         em.getTransaction().commit();
-        em.close();
         return true;
+    }
+
+    public void encerraConexao() {
+        em.close();
     }
 
     // TODO: há outra forma de listar todos usuários sem criar JPQL?
