@@ -4,15 +4,16 @@ import br.com.estudo.pagamentos.usuario.Usuario;
 import br.com.estudo.pagamentos.usuario.UsuarioRepositorio;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
 public class UsuarioDao implements UsuarioRepositorio {
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("pagamentos");
-    private EntityManager em = emf.createEntityManager();
+    private EntityManager em;
+
+    public UsuarioDao(EntityManager em) {
+        this.em = em;
+    }
 
     @Override
     public void salva(Usuario usuario) {
