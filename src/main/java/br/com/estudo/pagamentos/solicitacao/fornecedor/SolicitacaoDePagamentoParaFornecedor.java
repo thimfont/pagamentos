@@ -8,7 +8,10 @@ import br.com.estudo.pagamentos.usuario.Usuario;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento {
     private Documento documento;
@@ -57,9 +60,6 @@ public class SolicitacaoDePagamentoParaFornecedor extends SolicitacaoDePagamento
     }
 
     private Parcela extraiPrimeiraParcela() {
-        List<Parcela> parcelamento = new ArrayList<>(this.parcelas);
-        parcelamento.sort(Comparator.comparing(Parcela::getVencimento));
-        Parcela primeiraParcela = parcelamento.get(0);
-        return primeiraParcela;
+        return parcelas.stream().sorted(Comparator.comparing(Parcela::getVencimento)).findFirst().get();
     }
 }
